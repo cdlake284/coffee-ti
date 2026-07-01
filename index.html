@@ -239,10 +239,12 @@
   .q-body{
     position:relative;
     z-index:1;
-    margin-top:auto;
-    padding-top:40px;
+    flex:1;
+    padding-top:24px;
+    padding-bottom:24px;
     display:flex;
     flex-direction:column;
+    justify-content:center;
   }
   .chapter-box{
   margin-top:12px;
@@ -294,36 +296,33 @@
     background:rgba(255,255,255,1);
     border:1px solid rgba(255,255,255,0.55);
     border-radius:16px;
-    padding:22px 14px;
+    padding:26px 18px 18px;
     display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
+    flex-direction:column;
+    align-items:stretch;
     box-shadow:0 8px 24px rgba(0,0,0,0.06);
     backdrop-filter:blur(6px);
     -webkit-backdrop-filter:blur(6px);
+  }
+  .options{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    width:100%;
+  }
+  .scale-labels{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
   }
   .scale-label{
     font-size:12px;
     color:var(--ink-dim);
     white-space:nowrap;
-    flex-shrink:0;
-  }
-  .scale-label.left{ text-align:right; }
-  .scale-label.right{ text-align:left; }
-  .options{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    flex:1;
   }
   .circle-btn{
-    width:30px;
-    height:30px;
-    min-width:30px;
     border-radius:50%;
-    border:1.5px solid var(--line);
+    border:2px solid var(--line);
     background:#fff;
     display:flex;
     align-items:center;
@@ -335,13 +334,12 @@
   }
   .circle-btn:active{ transform:scale(0.92); }
   .circle-btn.selected{
-    background:var(--adventure);
-    border-color:var(--adventure);
+    /* background/border color set inline per option to match the agree/disagree gradient */
   }
   .circle-btn.selected::after{
     content:"✓";
     color:#fff;
-    font-size:14px;
+    font-size:13px;
     line-height:1;
   }
 
@@ -524,9 +522,11 @@
         <div class="q-text" id="q-text">첫 모금을 마셨을 때 산뜻한 느낌의 커피를 좋아한다.</div>
       </div>
       <div class="scale-box">
-        <span class="scale-label left">전혀 아니다</span>
         <div class="options" id="options"></div>
-        <span class="scale-label right">매우 그렇다</span>
+        <div class="scale-labels">
+          <span class="scale-label">아니다</span>
+          <span class="scale-label">그렇다</span>
+        </div>
       </div>
     </div>
   </section>
@@ -776,12 +776,36 @@ function renderQuestion(){
   optionsEl.innerHTML = '';
   OPTION_LABELS.forEach(opt=>{
     const btn = document.createElement('button');
-    btn.className = 'circle-btn' + (answers[current]===opt.v ? ' selected' : '');
+    const isSelected = answers[current] === opt.v;
+    const size = scaleSizeForValue(opt.v);
+    const color = scaleColorForValue(opt.v);
+    btn.className = 'circle-btn' + (isSelected ? ' selected' : '');
+    btn.style.width = size + 'px';
+    btn.style.height = size + 'px';
+    btn.style.borderColor = color;
+    if(isSelected){ btn.style.background = color; }
     btn.setAttribute('aria-label', opt.label);
     btn.title = opt.label;
     btn.addEventListener('click', ()=> selectAnswer(opt.v));
     optionsEl.appendChild(btn);
   });
+}
+
+// -2(아니다, 빨강) ~ +2(그렇다, 초록) 로 갈수록 테두리/채움 색이 점점 초록에 가까워집니다.
+function scaleColorForValue(v){
+  const t = (v + 2) / 4; // 0..1
+  const from = [199, 74, 34];  // 아니다 쪽 (레드/오렌지)
+  const to   = [63, 125, 74];  // 그렇다 쪽 (그린)
+  const r = Math.round(from[0] + (to[0]-from[0]) * t);
+  const g = Math.round(from[1] + (to[1]-from[1]) * t);
+  const b = Math.round(from[2] + (to[2]-from[2]) * t);
+  return `rgb(${r},${g},${b})`;
+}
+
+// 양 끝(강한 의견)은 크게, 가운데(보통)는 작게 표시됩니다.
+function scaleSizeForValue(v){
+  const sizeMap = { '-2':36, '-1':29, '0':22, '1':29, '2':36 };
+  return sizeMap[String(v)] || 28;
 }
 
 function selectAnswer(value){
