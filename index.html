@@ -224,6 +224,13 @@
   background-color:var(--bg);
   overflow:hidden;
 }
+  #screen-survey::before{
+    content:"";
+    position:absolute; inset:0;
+    background:rgba(255,255,255,0.6);
+    pointer-events:none;
+    z-index:0;
+  }
   #screen-survey .survey-top{ position:relative; z-index:1; }
   .q-body{
     position:relative;
@@ -234,36 +241,36 @@
     flex-direction:column;
   }
   .chapter-box{
-    background:rgba(255,255,255,0.42);
-    border:1px solid rgba(255,255,255,0.55);
+    position:relative;
+    z-index:1;
+    margin-top:16px;
+    background:rgba(255,255,255,0.9);
+    border:1px solid rgba(255,255,255,0.8);
     border-radius:14px;
     padding:12px 16px;
-    margin-bottom:12px;
   }
   .chapter-label{
     font-family:'IBM Plex Mono',monospace;
     font-size:10.5px;
     letter-spacing:1.5px;
-    color:var(--ink-dim);
-    opacity:0.85;
+    color:#111;
   }
   .chapter-title{
     font-family:'Fraunces',serif;
     font-size:13.5px;
     font-weight:600;
-    color:var(--ink-dim);
+    color:#111;
     margin-top:3px;
   }
   .chapter-text{
     font-size:12px;
     line-height:1.5;
-    color:var(--ink-dim);
-    opacity:0.9;
+    color:#111;
     margin-top:4px;
   }
   .q-box{
-    background:rgba(255,255,255,0.72);
-    border:1px solid rgba(255,255,255,0.65);
+    background:rgba(255,255,255,0.9);
+    border:1px solid rgba(255,255,255,0.8);
     border-radius:16px;
     padding:18px 18px;
     box-shadow:0 4px 18px rgba(0,0,0,0.07);
@@ -273,6 +280,7 @@
     line-height:1.5;
     font-weight:600;
     font-family:'Fraunces',serif;
+    color:#111;
   }
   .options{
     padding-top:26px;
@@ -481,12 +489,12 @@
       <div class="roast-gauge"><div class="mask" id="roast-mask" style="width:92%"></div></div>
       <div class="q-count" id="q-count">1 / 12</div>
     </div>
+    <div class="chapter-box">
+      <div class="chapter-label" id="chapter-label">CHAPTER 01</div>
+      <div class="chapter-title" id="chapter-title">원정의 시작</div>
+      <div class="chapter-text" id="chapter-text">새로운 원정이 시작되었습니다. 오두막을 나와 첫 발걸음을 내딛습니다.</div>
+    </div>
     <div class="q-body">
-      <div class="chapter-box">
-        <div class="chapter-label" id="chapter-label">CHAPTER 01</div>
-        <div class="chapter-title" id="chapter-title">원정의 시작</div>
-        <div class="chapter-text" id="chapter-text">새로운 원정이 시작되었습니다. 오두막을 나와 첫 발걸음을 내딛습니다.</div>
-      </div>
       <div class="q-box">
         <div class="q-text" id="q-text">첫 모금을 마셨을 때 산뜻한 느낌의 커피를 좋아한다.</div>
       </div>
