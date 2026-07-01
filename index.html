@@ -730,7 +730,7 @@ const roastMask = document.getElementById('roast-mask');
 const qText = document.getElementById('q-text');
 const chapterLabel = document.getElementById('chapter-label');
 const chapterTitle = document.getElementById('chapter-title');
-const chapterText = document.getElementById('chapter-text');
+
 const optionsEl = document.getElementById('options');
 
 function renderQuestion(){
@@ -743,8 +743,7 @@ function renderQuestion(){
   if(chapter){
     chapterLabel.textContent = chapter.chapter;
     chapterTitle.textContent = chapter.title;
-    chapterText.textContent = chapter.text;
-  }
+    }
 
   const progressRatio = (current) / questions.length; // fill decreases mask width from right
   roastMask.style.width = `${(1-progressRatio)*100}%`;
