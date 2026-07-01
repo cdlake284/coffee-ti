@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "question": "첫 모금을 마셨을 때 산뜻한 느낌의 커피를 좋아한다.",
+    "effect": {
+      "fruit": 1,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 2,
+      "sweetness": 0,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 2,
+    "question": "마시고 난 후 입안이 깔끔하게 마무리되는 커피를 좋아한다.",
+    "effect": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 2,
+      "sweetness": 0,
+      "body": -1,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 3,
+    "question": "달콤하면서 고소한 풍미가 느껴지는 커피를 좋아한다.",
+    "effect": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 1,
+      "chocolate": 1,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 2,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 4,
+    "question": "진하고 쌉싸름한 풍미가 느껴지는 커피를 좋아한다.",
+    "effect": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 1,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 5,
+    "question": "견과류처럼 편안하고 고소한 느낌의 커피를 좋아한다.",
+    "effect": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 1,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 6,
+    "question": "초콜릿처럼 깊고 부드러운 풍미가 있는 커피를 좋아한다.",
+    "effect": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 2,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 1,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 7,
+    "question": "향을 맡았을 때 여러 가지 향이 느껴지는 커피를 좋아한다.",
+    "effect": {
+      "fruit": 1,
+      "floral": 1,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 8,
+    "question": "꽃처럼 은은하고 향긋한 느낌의 커피를 좋아한다.",
+    "effect": {
+      "fruit": 1,
+      "floral": 2,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 9,
+    "question": "평소 접하기 어려운 개성 있는 향과 맛의 커피를 즐긴다.",
+    "effect": {
+      "fruit": 1,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 10,
+    "question": "은은한 향보다 선명하게 느껴지는 향의 커피를 좋아한다.",
+    "effect": {
+      "fruit": 1,
+      "floral": 1,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 11,
+    "question": "상큼한 과일을 떠올리게 하는 풍미의 커피를 좋아한다.",
+    "effect": {
+      "fruit": 2,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 1,
+      "sweetness": 1,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 12,
+    "question": "오래 남는 깊은 여운이 있는 커피를 좋아한다.",
+    "effect": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 1,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 2,
+      "bitterness": 1
+    }
+  }
+]
