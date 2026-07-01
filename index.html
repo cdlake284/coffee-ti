@@ -289,41 +289,61 @@
     font-family:'Fraunces',serif;
     color:#111;
   }
-  .options{
-    padding-top:26px;
+  .scale-box{
+    margin-top:26px;
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(255,255,255,0.55);
+    border-radius:16px;
+    padding:22px 14px;
     display:flex;
-    flex-direction:column;
+    align-items:center;
+    justify-content:center;
     gap:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.06);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
   }
- .opt-btn{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:rgba(255,255,255,1);
-  border:1px solid rgba(255,255,255,0.55);
-  border-radius:16px;
-  padding:14px 16px;
-  color:var(--ink);
-  font-size:15px;
-  font-family:'IBM Plex Sans KR',sans-serif;
-  cursor:pointer;
-  text-align:left;
-  box-shadow:0 8px 24px rgba(0,0,0,0.06);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
-  transition:border-color .15s ease, background .15s ease, transform .1s ease;
-}
-  .opt-btn .dot{
-    width:10px;height:10px;border-radius:50%;
-    border:1.5px solid var(--ink-dim);
+  .scale-label{
+    font-size:12px;
+    color:var(--ink-dim);
+    white-space:nowrap;
     flex-shrink:0;
   }
-  .opt-btn:active{ transform:scale(0.98); }
-  .opt-btn.selected{
-    border-color:var(--adventure);
-    background:rgba(63,125,74,0.14);
+  .scale-label.left{ text-align:right; }
+  .scale-label.right{ text-align:left; }
+  .options{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    flex:1;
   }
-  .opt-btn.selected .dot{ background:var(--adventure); border-color:var(--adventure); }
+  .circle-btn{
+    width:30px;
+    height:30px;
+    min-width:30px;
+    border-radius:50%;
+    border:1.5px solid var(--line);
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    cursor:pointer;
+    transition:border-color .15s ease, background .15s ease, transform .1s ease;
+    flex-shrink:0;
+  }
+  .circle-btn:active{ transform:scale(0.92); }
+  .circle-btn.selected{
+    background:var(--adventure);
+    border-color:var(--adventure);
+  }
+  .circle-btn.selected::after{
+    content:"✓";
+    color:#fff;
+    font-size:14px;
+    line-height:1;
+  }
 
   /* ---------- LOADING ---------- */
   #screen-loading{ align-items:center; justify-content:center; text-align:center; gap:16px; }
@@ -503,7 +523,11 @@
       <div class="q-box">
         <div class="q-text" id="q-text">첫 모금을 마셨을 때 산뜻한 느낌의 커피를 좋아한다.</div>
       </div>
-      <div class="options" id="options"></div>
+      <div class="scale-box">
+        <span class="scale-label left">전혀 아니다</span>
+        <div class="options" id="options"></div>
+        <span class="scale-label right">매우 그렇다</span>
+      </div>
     </div>
   </section>
 
@@ -752,8 +776,9 @@ function renderQuestion(){
   optionsEl.innerHTML = '';
   OPTION_LABELS.forEach(opt=>{
     const btn = document.createElement('button');
-    btn.className = 'opt-btn' + (answers[current]===opt.v ? ' selected' : '');
-    btn.innerHTML = `<span class="dot"></span><span>${opt.label}</span>`;
+    btn.className = 'circle-btn' + (answers[current]===opt.v ? ' selected' : '');
+    btn.setAttribute('aria-label', opt.label);
+    btn.title = opt.label;
     btn.addEventListener('click', ()=> selectAnswer(opt.v));
     optionsEl.appendChild(btn);
   });
