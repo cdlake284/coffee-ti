@@ -224,19 +224,6 @@
   background-color:var(--bg);
   overflow:hidden;
 }
- #screen-survey::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background:rgba(255,255,255,0.40);
-
-    -webkit-backdrop-filter:blur(2px);
-    backdrop-filter:blur(2px);
-
-    pointer-events:none;
-    z-index:0;
-}
   #screen-survey .survey-top{ position:relative; z-index:1; }
   .q-body{
     position:relative;
@@ -246,12 +233,46 @@
     display:flex;
     flex-direction:column;
   }
+  .chapter-box{
+    background:rgba(255,255,255,0.42);
+    border:1px solid rgba(255,255,255,0.55);
+    border-radius:14px;
+    padding:12px 16px;
+    margin-bottom:12px;
+  }
+  .chapter-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:1.5px;
+    color:var(--ink-dim);
+    opacity:0.85;
+  }
+  .chapter-title{
+    font-family:'Fraunces',serif;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink-dim);
+    margin-top:3px;
+  }
+  .chapter-text{
+    font-size:12px;
+    line-height:1.5;
+    color:var(--ink-dim);
+    opacity:0.9;
+    margin-top:4px;
+  }
+  .q-box{
+    background:rgba(255,255,255,0.72);
+    border:1px solid rgba(255,255,255,0.65);
+    border-radius:16px;
+    padding:18px 18px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.07);
+  }
   .q-text{
     font-size:clamp(19px,5.4vw,22px);
     line-height:1.5;
     font-weight:600;
     font-family:'Fraunces',serif;
-    text-shadow:0 1px 12px rgba(251,253,246,0.9);
   }
   .options{
     padding-top:26px;
@@ -461,7 +482,14 @@
       <div class="q-count" id="q-count">1 / 12</div>
     </div>
     <div class="q-body">
-      <div class="q-text" id="q-text">첫 모금을 마셨을 때 산뜻한 느낌의 커피를 좋아한다.</div>
+      <div class="chapter-box">
+        <div class="chapter-label" id="chapter-label">CHAPTER 01</div>
+        <div class="chapter-title" id="chapter-title">원정의 시작</div>
+        <div class="chapter-text" id="chapter-text">새로운 원정이 시작되었습니다. 오두막을 나와 첫 발걸음을 내딛습니다.</div>
+      </div>
+      <div class="q-box">
+        <div class="q-text" id="q-text">첫 모금을 마셨을 때 산뜻한 느낌의 커피를 좋아한다.</div>
+      </div>
       <div class="options" id="options"></div>
     </div>
   </section>
@@ -516,6 +544,74 @@
    DATA
 ========================================================= */
 const TRAITS = ["fruit","floral","nutty","chocolate","unique","acidity","sweetness","body","bitterness"];
+
+const CHAPTERS = [
+  {
+    chapter: "CHAPTER 01",
+    title: "원정의 시작",
+    text: "새로운 원정이 시작되었습니다. 오두막을 나와 첫 발걸음을 내딛습니다."
+  },
+  {
+    chapter: "CHAPTER 02",
+    title: "끝없는 들판",
+    text: "푸른 하늘 아래 끝없이 펼쳐진 들판을 걸어갑니다. 바람이 기분 좋게 스쳐 지나갑니다."
+  },
+  {
+    chapter: "CHAPTER 03",
+    title: "꽃이 가득한 길",
+    text: "꽃이 흐드러진 들판을 지나며 주변 풍경을 천천히 둘러봅니다."
+  },
+  {
+    chapter: "CHAPTER 04",
+    title: "낯선 향기의 들판",
+    text: "들판을 따라 걷다 보니 처음 맡아보는 낯선 향기들이 바람에 실려옵니다."
+  },
+  {
+    chapter: "CHAPTER 05",
+    title: "숲의 입구",
+    text: "들판 끝에서 울창한 숲이 모습을 드러냅니다. 길은 점점 깊은 곳으로 이어집니다."
+  },
+  {
+    chapter: "CHAPTER 06",
+    title: "숲속 쉼터",
+    text: "우거진 숲 한가운데 작은 쉼터를 발견했습니다. 잠시 숨을 고르기로 합니다."
+  },
+  {
+    chapter: "CHAPTER 07",
+    title: "강가의 휴식",
+    text: "숲 한가운데 흐르는 강가에 도착했습니다. 잔잔한 물소리가 여정을 잠시 멈추게 합니다."
+  },
+  {
+    chapter: "CHAPTER 08",
+    title: "노을이 지는 고갯길",
+    text: "해가 기울기 시작하고, 노을이 물든 고갯길을 천천히 오릅니다."
+  },
+  {
+    chapter: "CHAPTER 09",
+    title: "웅장한 산맥",
+    text: "눈앞에 거대한 산맥이 펼쳐졌습니다. 묵직한 풍경이 오래도록 시야에 남습니다."
+  },
+  {
+    chapter: "CHAPTER 10",
+    title: "별이 뜬 밤",
+    text: "어느새 밤이 찾아왔습니다. 별빛 아래에서 오늘의 여정을 조용히 돌아봅니다."
+  },
+  {
+    chapter: "CHAPTER 11",
+    title: "마을의 불빛",
+    text: "고갯길 아래로 따뜻한 마을의 불빛이 보입니다. 긴 여정의 끝이 가까워졌습니다."
+  },
+  {
+    chapter: "CHAPTER 12",
+    title: "마을로 향하는 길",
+    text: "언덕을 따라 천천히 마을로 내려갑니다. 이제 원정을 마무리할 시간입니다."
+  },
+  {
+    chapter: "CHAPTER 13",
+    title: "마지막 선택",
+    text: "원정을 마친 당신, 잠이 들기 전 깊은 생각에 잠깁니다."
+  }
+];
 
 let questions = [];
 let types = [];
@@ -618,6 +714,9 @@ const btnBack = document.getElementById('btn-back');
 const qCount = document.getElementById('q-count');
 const roastMask = document.getElementById('roast-mask');
 const qText = document.getElementById('q-text');
+const chapterLabel = document.getElementById('chapter-label');
+const chapterTitle = document.getElementById('chapter-title');
+const chapterText = document.getElementById('chapter-text');
 const optionsEl = document.getElementById('options');
 
 function renderQuestion(){
@@ -626,10 +725,17 @@ function renderQuestion(){
   qCount.textContent = `${current+1} / ${questions.length}`;
   btnBack.disabled = current === 0;
 
+  const chapter = CHAPTERS[current];
+  if(chapter){
+    chapterLabel.textContent = chapter.chapter;
+    chapterTitle.textContent = chapter.title;
+    chapterText.textContent = chapter.text;
+  }
+
   const progressRatio = (current) / questions.length; // fill decreases mask width from right
   roastMask.style.width = `${(1-progressRatio)*100}%`;
 
-  // 배경 이미지는 모든 설문 페이지에서 동일한 images/background/page_background.png 를 사용합니다.
+  // 배경 이미지는 모든 설문 페이지에서 동일한 images/background/page background.png 를 사용합니다.
 
   optionsEl.innerHTML = '';
   OPTION_LABELS.forEach(opt=>{
