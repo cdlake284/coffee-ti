@@ -735,7 +735,7 @@ const optionsEl = document.getElementById('options');
 
 function renderQuestion(){
   const q = questions[current];
-  qText.textContent = q.question;
+  qText.textContent = "Q. " + q.question;
   qCount.textContent = `${current+1} / ${questions.length}`;
   btnBack.disabled = current === 0;
 
