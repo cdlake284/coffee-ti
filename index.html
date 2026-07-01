@@ -227,11 +227,17 @@
 }
   #screen-survey::before{
     content:"";
-    position:absolute; inset:0;
-    background:rgba(255,255,255,0.6);
+    position:absolute;
+    inset:0;
+
+    background:rgba(255,255,255,0.4);
+
+    backdrop-filter:blur(1px);
+    -webkit-backdrop-filter:blur(1px);
+
     pointer-events:none;
     z-index:0;
-  }
+}
   #screen-survey .survey-top{ position:relative; z-index:1; }
   .q-body{
     position:relative;
