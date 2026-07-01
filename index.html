@@ -241,14 +241,14 @@
     flex-direction:column;
   }
   .chapter-box{
-    position:relative;
-    z-index:1;
-    margin-top:16px;
-    background:#ffffff;
-    border:1px solid rgba(255,255,255,0.8);
-    border-radius:14px;
-    padding:12px 16px;
-  }
+  background:rgba(255,255,255,0.78);
+  border:1px solid rgba(255,255,255,0.55);
+  border-radius:16px;
+  padding:12px 16px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.06);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
   .chapter-label{
     font-family:'IBM Plex Mono',monospace;
     font-size:10.5px;
@@ -269,12 +269,14 @@
     margin-top:4px;
   }
   .q-box{
-    background:#ffffff;
-    border:1px solid rgba(255,255,255,0.8);
-    border-radius:16px;
-    padding:18px 18px;
-    box-shadow:0 4px 18px rgba(0,0,0,0.07);
-  }
+  background:rgba(255,255,255,0.78);
+  border:1px solid rgba(255,255,255,0.55);
+  border-radius:16px;
+  padding:18px 18px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.06);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
   .q-text{
     font-size:clamp(19px,5.4vw,22px);
     line-height:1.5;
@@ -288,21 +290,24 @@
     flex-direction:column;
     gap:10px;
   }
-  .opt-btn{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    background:#ffffff;
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:14px 16px;
-    color:var(--ink);
-    font-size:15px;
-    font-family:'IBM Plex Sans KR',sans-serif;
-    cursor:pointer;
-    text-align:left;
-    transition:border-color .15s ease, background .15s ease, transform .1s ease;
-  }
+ .opt-btn{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:rgba(255,255,255,0.78);
+  border:1px solid rgba(255,255,255,0.55);
+  border-radius:16px;
+  padding:14px 16px;
+  color:var(--ink);
+  font-size:15px;
+  font-family:'IBM Plex Sans KR',sans-serif;
+  cursor:pointer;
+  text-align:left;
+  box-shadow:0 8px 24px rgba(0,0,0,0.06);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  transition:border-color .15s ease, background .15s ease, transform .1s ease;
+}
   .opt-btn .dot{
     width:10px;height:10px;border-radius:50%;
     border:1.5px solid var(--ink-dim);
