@@ -1,0 +1,1019 @@
+[
+  {
+    "id": 1,
+    "name_ko": "에티오피아 예가체프 아리차 에이미 G1 - 마이크로랏",
+    "name_en": "Ethiopia Yirgacheffe Aricha Amy G1 - Micro Lot",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Kurume"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "스트로베리",
+      "체리",
+      "피치",
+      "브라운슈가"
+    ],
+    "taste_score": {
+      "fruit": 5,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 3,
+      "sweetness": 4,
+      "body": 2,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 2,
+    "name_ko": "에티오피아 예가체프 아리차 에이미 G1 - 마이크로랏",
+    "name_en": "Ethiopia Yirgacheffe Aricha Amy G1 - Micro Lot",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "74110",
+      "74158",
+      "74148"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "자스민",
+      "피치",
+      "애프리콧",
+      "커런트",
+      "만다린"
+    ],
+    "taste_score": {
+      "fruit": 4,
+      "floral": 3,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 4,
+      "sweetness": 3,
+      "body": 1,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 3,
+    "name_ko": "에티오피아 예가체프 겔레나 아바야 게이샤 G1",
+    "name_en": "Ethiopia Yirgacheffe Gelena Abaya Gesha G1",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Kurume",
+      "Wolisho",
+      "Daga"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "플럼",
+      "블랙베리",
+      "구아바",
+      "브라운슈가"
+    ],
+    "taste_score": {
+      "fruit": 5,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 3,
+      "sweetness": 4,
+      "body": 2,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 4,
+    "name_ko": "에티오피아 시다마 벤사 봄베 에이미 G1 - 마이크로랏",
+    "name_en": "Ethiopia Sidama Bensa Bombe Amy G1 - Micro Lot",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "74110",
+      "74158"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "라벤더",
+      "오렌지",
+      "플로럴",
+      "애프리콧",
+      "밀크초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 3,
+      "floral": 4,
+      "nutty": 0,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 3,
+      "sweetness": 3,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 5,
+    "name_ko": "에티오피아 구지 샤키소 리유 에이미 G1",
+    "name_en": "Ethiopia Guji Shakisso Liyu Amy G1",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "74118",
+      "74110",
+      "74158"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "스트로베리",
+      "체리",
+      "애프리콧",
+      "티로즈"
+    ],
+    "taste_score": {
+      "fruit": 5,
+      "floral": 2,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 4,
+      "sweetness": 3,
+      "body": 1,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 6,
+    "name_ko": "에티오피아 웨스트 알시 넨세보 워르카 G1",
+    "name_en": "Ethiopia West Arsi Nensebo Worka G1",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Heirloom"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "황도",
+      "허니콤",
+      "요거트",
+      "넥타르",
+      "망고"
+    ],
+    "taste_score": {
+      "fruit": 5,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 3,
+      "acidity": 2,
+      "sweetness": 5,
+      "body": 2,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 7,
+    "name_ko": "에티오피아 웨스트 알시 넨세보 G1",
+    "name_en": "Ethiopia West Arsi Nensebo G1",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Heirloom"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "라벤더",
+      "플로럴",
+      "애프리콧",
+      "레몬그라스"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 5,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 4,
+      "sweetness": 2,
+      "body": 1,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 8,
+    "name_ko": "에티오피아 예가체프 코케 허니 G1",
+    "name_en": "Ethiopia Yirgacheffe Koke Honey G1",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "74110",
+      "74158",
+      "Daga"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "플럼",
+      "베리",
+      "로즈힙",
+      "오렌지",
+      "허니"
+    ],
+    "taste_score": {
+      "fruit": 4,
+      "floral": 2,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 1,
+      "acidity": 4,
+      "sweetness": 4,
+      "body": 1,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 9,
+    "name_ko": "에티오피아 예가체프 코케 G2",
+    "name_en": "Ethiopia Yirgacheffe Koke G2",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Heirloom"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "피치",
+      "플로럴",
+      "자스민",
+      "블랙커런트"
+    ],
+    "taste_score": {
+      "fruit": 3,
+      "floral": 4,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 3,
+      "sweetness": 3,
+      "body": 1,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 10,
+    "name_ko": "에티오피아 예가체프 아리차 G2",
+    "name_en": "Ethiopia Yirgacheffe Aricha G2",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "74110",
+      "74158",
+      "74148"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "베리",
+      "플럼",
+      "오렌지",
+      "허브"
+    ],
+    "taste_score": {
+      "fruit": 4,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 4,
+      "sweetness": 2,
+      "body": 1,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 11,
+    "name_ko": "에티오피아 예가체프 게르시 G2",
+    "name_en": "Ethiopia Yirgacheffe Gersi G2",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Kurume"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "자스민",
+      "자몽",
+      "허니",
+      "라임",
+      "라벤더"
+    ],
+    "taste_score": {
+      "fruit": 3,
+      "floral": 4,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 1,
+      "acidity": 5,
+      "sweetness": 3,
+      "body": 1,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 12,
+    "name_ko": "에티오피아 예가체프 G2",
+    "name_en": "Ethiopia Yirgacheffe G2",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Heirloom"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "자스민",
+      "프루티",
+      "고구마",
+      "브라운슈가"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 3,
+      "nutty": 1,
+      "chocolate": 0,
+      "unique": 1,
+      "acidity": 2,
+      "sweetness": 4,
+      "body": 2,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 13,
+    "name_ko": "에티오피아 시다모 G2",
+    "name_en": "Ethiopia Sidamo G2",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Heirloom"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "피치",
+      "프루티",
+      "아몬드",
+      "초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 3,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 2,
+      "unique": 0,
+      "acidity": 2,
+      "sweetness": 3,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 14,
+    "name_ko": "에티오피아 예가체프 G4",
+    "name_en": "Ethiopia Yirgacheffe G4",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Heirloom"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "프루티",
+      "허브",
+      "카카오닙스",
+      "몰트"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 0,
+      "nutty": 1,
+      "chocolate": 2,
+      "unique": 2,
+      "acidity": 2,
+      "sweetness": 2,
+      "body": 3,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 15,
+    "name_ko": "에티오피아 시다모 G4",
+    "name_en": "Ethiopia Sidamo G4",
+    "country_ko": "에티오피아",
+    "country_en": "Ethiopia",
+    "variety": [
+      "Heirloom"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "프루티",
+      "너티",
+      "카카오닙스",
+      "몰트"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 1,
+      "sweetness": 2,
+      "body": 3,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 16,
+    "name_ko": "케냐 엠부 구세인다 에이미 AA TOP - 마이크로랏",
+    "name_en": "Kenya Embu Guchienda Amy AA TOP - Micro Lot",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "SL-28"
+    ],
+    "process": "풀리워시드",
+    "cup_notes": [
+      "블랙커런트",
+      "토마토",
+      "체리",
+      "포도",
+      "브라운슈가"
+    ],
+    "taste_score": {
+      "fruit": 5,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 3,
+      "acidity": 4,
+      "sweetness": 4,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 17,
+    "name_ko": "케냐 엠부 구세인다 에이미 AB TOP - 마이크로랏",
+    "name_en": "Kenya Embu Guchienda Amy AB TOP - Micro Lot",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "SL-28"
+    ],
+    "process": "풀리워시드",
+    "cup_notes": [
+      "블랙커런트",
+      "토마토",
+      "오렌지",
+      "블랙티"
+    ],
+    "taste_score": {
+      "fruit": 4,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 3,
+      "acidity": 4,
+      "sweetness": 2,
+      "body": 2,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 18,
+    "name_ko": "케냐 엠부 구세인다 에이미 PB TOP - 마이크로랏",
+    "name_en": "Kenya Embu Guchienda Amy PB TOP - Micro Lot",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "SL-28"
+    ],
+    "process": "풀리워시드",
+    "cup_notes": [
+      "블랙커런트",
+      "자몽",
+      "블랙체리",
+      "트리토마토",
+      "홍차"
+    ],
+    "taste_score": {
+      "fruit": 5,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 3,
+      "acidity": 5,
+      "sweetness": 2,
+      "body": 2,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 19,
+    "name_ko": "케냐 엠부 구세인다 AA TOP - 마이크로랏",
+    "name_en": "Kenya Embu Guchienda AA TOP - Micro Lot",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "SL-28"
+    ],
+    "process": "풀리워시드",
+    "cup_notes": [
+      "블랙커런트",
+      "자두",
+      "블랙베리",
+      "자몽",
+      "마카다미아"
+    ],
+    "taste_score": {
+      "fruit": 5,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 0,
+      "unique": 1,
+      "acidity": 5,
+      "sweetness": 2,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 20,
+    "name_ko": "케냐 엠부 구세인다 AB TOP - 마이크로랏",
+    "name_en": "Kenya Embu Guchienda AB TOP - Micro Lot",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "SL-28"
+    ],
+    "process": "풀리워시드",
+    "cup_notes": [
+      "블랙커런트",
+      "자두",
+      "오렌지",
+      "크랜베리",
+      "캐슈넛",
+      "초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 4,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 2,
+      "unique": 0,
+      "acidity": 4,
+      "sweetness": 2,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 21,
+    "name_ko": "케냐 엠부 구세인다 PB TOP - 마이크로랏",
+    "name_en": "Kenya Embu Guchienda PB TOP - Micro Lot",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "SL-28"
+    ],
+    "process": "풀리워시드",
+    "cup_notes": [
+      "블랙커런트",
+      "시트러스",
+      "아몬드",
+      "초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 3,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 2,
+      "unique": 0,
+      "acidity": 4,
+      "sweetness": 2,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 22,
+    "name_ko": "케냐 키리냐가 키이 AA TOP - 마이크로랏",
+    "name_en": "Kenya Kirinyaga Kii AA TOP - Micro Lot",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "SL-28",
+      "SL-34"
+    ],
+    "process": "풀리워시드",
+    "cup_notes": [
+      "블랙커런트",
+      "트리토마토",
+      "자몽",
+      "블랙티"
+    ],
+    "taste_score": {
+      "fruit": 4,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 3,
+      "acidity": 5,
+      "sweetness": 2,
+      "body": 2,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 23,
+    "name_ko": "케냐 타무 AA TOP - 마이크로랏",
+    "name_en": "Kenya Tamu AA TOP - Micro Lot",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "SL-28",
+      "SL-34"
+    ],
+    "process": "풀리워시드",
+    "cup_notes": [
+      "블랙베리",
+      "커런트",
+      "자몽",
+      "초콜릿",
+      "흑설탕"
+    ],
+    "taste_score": {
+      "fruit": 4,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 2,
+      "unique": 0,
+      "acidity": 4,
+      "sweetness": 3,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 24,
+    "name_ko": "케냐 키암부 AA FAQ",
+    "name_en": "Kenya Kiambu AA FAQ",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "Ruiru 11"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "커런트",
+      "허브",
+      "라임",
+      "브라운슈가"
+    ],
+    "taste_score": {
+      "fruit": 3,
+      "floral": 0,
+      "nutty": 0,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 4,
+      "sweetness": 3,
+      "body": 1,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 25,
+    "name_ko": "케냐 키암부 AB FAQ",
+    "name_en": "Kenya Kiambu AB FAQ",
+    "country_ko": "케냐",
+    "country_en": "Kenya",
+    "variety": [
+      "Ruiru 11"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "커런트",
+      "아몬드",
+      "카카오",
+      "브라운슈가",
+      "허브"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 2,
+      "unique": 2,
+      "acidity": 2,
+      "sweetness": 3,
+      "body": 2,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 26,
+    "name_ko": "탄자니아 킬리만자로 AA",
+    "name_en": "Tanzania Kilimanjaro AA",
+    "country_ko": "탄자니아",
+    "country_en": "Tanzania",
+    "variety": [
+      "Kent",
+      "Bourbon"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "커런트",
+      "시더",
+      "아몬드",
+      "브라운슈가"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 2,
+      "sweetness": 3,
+      "body": 2,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 27,
+    "name_ko": "우간다 부기수 A",
+    "name_en": "Uganda Bugisu A",
+    "country_ko": "우간다",
+    "country_en": "Uganda",
+    "variety": [
+      "Bourbon",
+      "SL28"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "아몬드",
+      "브라운슈가",
+      "월넛",
+      "카라멜"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 1,
+      "sweetness": 4,
+      "body": 3,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 28,
+    "name_ko": "우간다 로부스타 SC18",
+    "name_en": "Uganda Robusta SC18",
+    "country_ko": "우간다",
+    "country_en": "Uganda",
+    "variety": [
+      "Robusta"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "보리",
+      "옥수수",
+      "씨리얼",
+      "몰트"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 0,
+      "sweetness": 2,
+      "body": 4,
+      "bitterness": 3
+    }
+  },
+  {
+    "id": 29,
+    "name_ko": "르완다 냐마시케 카가노 인조부 AA",
+    "name_en": "Rwanda Nyamasheke Kagano Inzovu AA",
+    "country_ko": "르완다",
+    "country_en": "Rwanda",
+    "variety": [
+      "Bourbon",
+      "Typica"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "블랙베리",
+      "자몽",
+      "감초",
+      "피넛"
+    ],
+    "taste_score": {
+      "fruit": 3,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 0,
+      "unique": 3,
+      "acidity": 4,
+      "sweetness": 2,
+      "body": 2,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 30,
+    "name_ko": "예멘 모카 마타리 셀렉션",
+    "name_en": "Yemen Mocha Mattari Selection",
+    "country_ko": "예멘",
+    "country_en": "Yemen",
+    "variety": [
+      "Yemen Arabica Heirloom"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "마카다미아",
+      "자몽",
+      "시더",
+      "다크초콜릿",
+      "피칸버터"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 3,
+      "unique": 3,
+      "acidity": 3,
+      "sweetness": 2,
+      "body": 4,
+      "bitterness": 3
+    }
+  },
+  {
+    "id": 31,
+    "name_ko": "[디카페인] BR NY2/3 MTGB FC - 마운틴워터",
+    "name_en": "Brazil NY2/3 MTGB FC - Mountain Water",
+    "country_ko": "브라질",
+    "country_en": "Brazil",
+    "variety": [
+      "Catuai",
+      "Acaia",
+      "Mundo Novo"
+    ],
+    "process": "마운틴워터",
+    "cup_notes": [
+      "땅콩",
+      "참깨",
+      "보리",
+      "몰트",
+      "카카오"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 5,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 0,
+      "sweetness": 2,
+      "body": 4,
+      "bitterness": 3
+    }
+  },
+  {
+    "id": 32,
+    "name_ko": "[디카페인] 콜롬비아 엑셀소 마운틴워터",
+    "name_en": "Colombia Excelso Mountain Water",
+    "country_ko": "콜롬비아",
+    "country_en": "Colombia",
+    "variety": [
+      "Typica"
+    ],
+    "process": "마운틴워터",
+    "cup_notes": [
+      "아몬드",
+      "브라운슈가",
+      "초콜릿",
+      "카카오닙스"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 4,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 3,
+      "body": 4,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 33,
+    "name_ko": "[디카페인] 과테말라 SHB EP 마운틴워터",
+    "name_en": "Guatemala SHB EP Mountain Water",
+    "country_ko": "과테말라",
+    "country_en": "Guatemala",
+    "variety": [
+      "Typica",
+      "Bourbon"
+    ],
+    "process": "마운틴워터",
+    "cup_notes": [
+      "호박",
+      "브라운슈가",
+      "연기향",
+      "초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 1,
+      "chocolate": 3,
+      "unique": 3,
+      "acidity": 0,
+      "sweetness": 3,
+      "body": 4,
+      "bitterness": 3
+    }
+  },
+  {
+    "id": 34,
+    "name_ko": "[디카페인] 브라질 NY2 SC17/18 - 슈가케인",
+    "name_en": "Brazil NY2 SC17/18 - Sugarcane",
+    "country_ko": "브라질",
+    "country_en": "Brazil",
+    "variety": [
+      "Catuai",
+      "Acaia",
+      "Mundo Novo"
+    ],
+    "process": "슈가케인",
+    "cup_notes": [
+      "땅콩",
+      "참깨",
+      "몰트",
+      "카카오"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 5,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 0,
+      "sweetness": 2,
+      "body": 4,
+      "bitterness": 3
+    }
+  },
+  {
+    "id": 35,
+    "name_ko": "[디카페인] 콜롬비아 수프리모 - 슈가케인",
+    "name_en": "Colombia Supremo - Sugarcane",
+    "country_ko": "콜롬비아",
+    "country_en": "Colombia",
+    "variety": [
+      "Caturra",
+      "Castillo"
+    ],
+    "process": "슈가케인",
+    "cup_notes": [
+      "브라운슈가",
+      "카카오",
+      "자몽",
+      "너티",
+      "시트러스"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 2,
+      "unique": 0,
+      "acidity": 3,
+      "sweetness": 3,
+      "body": 3,
+      "bitterness": 2
+    }
+  }
+]
