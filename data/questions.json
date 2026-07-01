@@ -1,7 +1,13 @@
 [
   {
     "id": 1,
+    "category": "산미",
+    "purpose": "첫 모금의 산뜻함",
     "question": "첫 모금을 마셨을 때 산뜻한 느낌의 커피를 좋아한다.",
+    "effect_description": [
+      "Acidity 크게 증가",
+      "Fruit 소폭 증가"
+    ],
     "effect": {
       "fruit": 1,
       "floral": 0,
@@ -16,7 +22,13 @@
   },
   {
     "id": 2,
+    "category": "산미",
+    "purpose": "마신 후 깔끔한 마무리",
     "question": "마시고 난 후 입안이 깔끔하게 마무리되는 커피를 좋아한다.",
+    "effect_description": [
+      "Acidity 크게 증가",
+      "Body 감소"
+    ],
     "effect": {
       "fruit": 0,
       "floral": 0,
@@ -31,7 +43,14 @@
   },
   {
     "id": 3,
+    "category": "고소함",
+    "purpose": "달콤하고 고소한 풍미",
     "question": "달콤하면서 고소한 풍미가 느껴지는 커피를 좋아한다.",
+    "effect_description": [
+      "Sweetness 크게 증가",
+      "Nutty 증가",
+      "Chocolate 증가"
+    ],
     "effect": {
       "fruit": 0,
       "floral": 0,
@@ -46,7 +65,14 @@
   },
   {
     "id": 4,
+    "category": "고소함",
+    "purpose": "진하고 쌉싸름한 풍미",
     "question": "진하고 쌉싸름한 풍미가 느껴지는 커피를 좋아한다.",
+    "effect_description": [
+      "Body 크게 증가",
+      "Chocolate 증가",
+      "Bitterness 증가"
+    ],
     "effect": {
       "fruit": 0,
       "floral": 0,
@@ -61,7 +87,14 @@
   },
   {
     "id": 5,
+    "category": "고소함",
+    "purpose": "견과류의 고소함",
     "question": "견과류처럼 편안하고 고소한 느낌의 커피를 좋아한다.",
+    "effect_description": [
+      "Nutty 크게 증가",
+      "Sweetness 증가",
+      "Body 증가"
+    ],
     "effect": {
       "fruit": 0,
       "floral": 0,
@@ -76,7 +109,14 @@
   },
   {
     "id": 6,
+    "category": "고소함",
+    "purpose": "초콜릿의 깊은 풍미",
     "question": "초콜릿처럼 깊고 부드러운 풍미가 있는 커피를 좋아한다.",
+    "effect_description": [
+      "Chocolate 크게 증가",
+      "Sweetness 증가",
+      "Body 증가"
+    ],
     "effect": {
       "fruit": 0,
       "floral": 0,
@@ -91,7 +131,14 @@
   },
   {
     "id": 7,
+    "category": "향의 화려함",
+    "purpose": "복합적인 향",
     "question": "향을 맡았을 때 여러 가지 향이 느껴지는 커피를 좋아한다.",
+    "effect_description": [
+      "Unique 크게 증가",
+      "Fruit 증가",
+      "Floral 증가"
+    ],
     "effect": {
       "fruit": 1,
       "floral": 1,
@@ -106,7 +153,13 @@
   },
   {
     "id": 8,
+    "category": "향의 화려함",
+    "purpose": "꽃향 중심",
     "question": "꽃처럼 은은하고 향긋한 느낌의 커피를 좋아한다.",
+    "effect_description": [
+      "Floral 크게 증가",
+      "Fruit 증가"
+    ],
     "effect": {
       "fruit": 1,
       "floral": 2,
@@ -121,7 +174,13 @@
   },
   {
     "id": 9,
+    "category": "향의 화려함",
+    "purpose": "독특한 향미",
     "question": "평소 접하기 어려운 개성 있는 향과 맛의 커피를 즐긴다.",
+    "effect_description": [
+      "Unique 크게 증가",
+      "Fruit 증가"
+    ],
     "effect": {
       "fruit": 1,
       "floral": 0,
@@ -136,7 +195,14 @@
   },
   {
     "id": 10,
+    "category": "향의 화려함",
+    "purpose": "선명한 향",
     "question": "은은한 향보다 선명하게 느껴지는 향의 커피를 좋아한다.",
+    "effect_description": [
+      "Unique 크게 증가",
+      "Fruit 증가",
+      "Floral 증가"
+    ],
     "effect": {
       "fruit": 1,
       "floral": 1,
@@ -151,7 +217,14 @@
   },
   {
     "id": 11,
+    "category": "산미",
+    "purpose": "과일을 연상시키는 풍미",
     "question": "상큼한 과일을 떠올리게 하는 풍미의 커피를 좋아한다.",
+    "effect_description": [
+      "Fruit 크게 증가",
+      "Acidity 증가",
+      "Sweetness 증가"
+    ],
     "effect": {
       "fruit": 2,
       "floral": 0,
@@ -166,7 +239,14 @@
   },
   {
     "id": 12,
+    "category": "고소함",
+    "purpose": "깊고 오래 남는 여운",
     "question": "오래 남는 깊은 여운이 있는 커피를 좋아한다.",
+    "effect_description": [
+      "Body 크게 증가",
+      "Chocolate 증가",
+      "Bitterness 증가"
+    ],
     "effect": {
       "fruit": 0,
       "floral": 0,
