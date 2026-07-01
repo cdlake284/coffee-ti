@@ -100,19 +100,16 @@
     mask-image:linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.65) 16%, #000 34%);
     z-index:0;
   }
-  .start-top, #screen-start > div:last-child{ position:relative; z-index:1; }
-  .start-top, #screen-start > div:last-child{
+  .start-top{ position:relative; z-index:1; }
+  .start-cta{
     position:relative;
     z-index:1;
-}
-
-#screen-start > div:last-child{
+    margin-top:auto;
     margin-bottom:32px;
-}
+  }
 
 .start-top{
     margin-top:38px;
-    flex:1;
 }
   .start-top h1{
     font-size:clamp(24px,6vw,32px);
@@ -485,8 +482,8 @@
       <div class="eyebrow">Coffee Expedition</div>
       <h1>당신에게 가장 잘 맞는 커피를<br>찾아가는 여정을 떠나보세요</h1>
       <p></p>
-    <div>
-    <div>
+    </div>
+    <div class="start-cta">
       <button class="btn-primary" id="btn-start">여정 시작하기</button>
     </div>
   </section>
