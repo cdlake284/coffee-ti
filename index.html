@@ -217,21 +217,25 @@
     position:relative;
     margin:-28px -22px -40px;
     padding:28px 22px 40px;
-    background-size:contain;
-    background-position:center top;
+    background-image:url('images/background/page_background.png');
+    background-size:cover;
+    background-position:center center;
     background-repeat:no-repeat;
     background-color:var(--bg);
     overflow:hidden;
-    transition:background-image .25s ease;
   }
   #screen-survey::before{
     content:"";
     position:absolute; inset:0;
+    -webkit-backdrop-filter:blur(22px);
+    backdrop-filter:blur(22px);
     background:linear-gradient(180deg,
       rgba(238,243,226,0) 0%,
-      rgba(238,243,226,0.55) 44%,
-      rgba(238,243,226,0.94) 64%,
+      rgba(238,243,226,0.5) 38%,
+      rgba(238,243,226,0.88) 60%,
       var(--bg) 80%);
+    -webkit-mask-image:linear-gradient(180deg, transparent 0%, transparent 26%, black 46%, black 100%);
+    mask-image:linear-gradient(180deg, transparent 0%, transparent 26%, black 46%, black 100%);
     pointer-events:none;
     z-index:0;
   }
@@ -627,8 +631,7 @@ function renderQuestion(){
   const progressRatio = (current) / questions.length; // fill decreases mask width from right
   roastMask.style.width = `${(1-progressRatio)*100}%`;
 
-  const pageNum = String(q.id).padStart(2,'0');
-  document.getElementById('screen-survey').style.backgroundImage = `url('images/background/page${pageNum}_bg.png')`;
+  // 배경 이미지는 모든 설문 페이지에서 동일한 images/background/page_background.png 를 사용합니다.
 
   optionsEl.innerHTML = '';
   OPTION_LABELS.forEach(opt=>{
