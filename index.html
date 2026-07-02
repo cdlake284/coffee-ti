@@ -1067,9 +1067,22 @@ function renderResult(type, c1, c2){
 ========================================================= */
 document.getElementById('btn-save').addEventListener('click', ()=>{
   const target = document.getElementById('result-capture');
+
+  // 모바일 브라우저는 캔버스 한 장의 크기(가로/세로 픽셀, 총 면적)에
+  // 하드웨어적 상한이 있음 (대략 한 변 4096px, 총 약 1600만 픽셀).
+  // 콘텐츠 높이가 긴 결과 화면에 scale:2를 무조건 곱하면 이 한도를
+  // 넘어서 캔버스가 잘려버릴 수 있어, 실제 크기를 보고 배율을 자동으로 낮춘다.
+  const rect = target.getBoundingClientRect();
+  const MAX_DIM = 4000;          // 한 변 최대 픽셀
+  const MAX_AREA = 15_000_000;   // 총 픽셀 수 최대치(여유 있게 설정)
+  let scale = 2;
+  scale = Math.min(scale, MAX_DIM / rect.width, MAX_DIM / rect.height);
+  scale = Math.min(scale, Math.sqrt(MAX_AREA / (rect.width * rect.height)));
+  scale = Math.max(1, scale); // 최소 1배는 보장
+
   html2canvas(target, {
     backgroundColor:'#eef3e2',
-    scale:2,
+    scale,
     scrollX: 0,
     scrollY: -window.scrollY,
     windowWidth: document.documentElement.scrollWidth,
