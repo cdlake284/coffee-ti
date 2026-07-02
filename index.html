@@ -1036,12 +1036,25 @@ function renderSprite(typeId){
 function goCalculate(){
   showScreen('loading');
   setTimeout(()=>{
-    const userVec = computeUserVector();
-    const matchedType = isZeroVector(userVec)
-  ? types.find(t => t.id === "I")
-  : matchType(userVec);
-    const decafPref = computeDecafPreference();
-    const [c1, c2] = recommendCoffees(userVec, decafPref);
+    let userVec = computeUserVector();
+const decafPref = computeDecafPreference();
+
+let matchedType;
+
+if (isZeroVector(userVec)) {
+
+    matchedType = types.find(t => t.id === "I");
+
+    // 여행자 타입의 기준점으로 userVec을 변경
+    userVec = { ...matchedType.center_score };
+
+} else {
+
+    matchedType = matchType(userVec);
+
+}
+
+const [c1, c2] = recommendCoffees(userVec, decafPref);
     renderResult(matchedType, c1, c2);
     showScreen('result');
   }, 700);
