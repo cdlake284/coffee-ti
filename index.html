@@ -876,7 +876,10 @@ function computeUserVector(){
   });
   return vec;
 }
-
+function isZeroVector(vec){
+  return TRAITS.every(t => (vec[t] || 0) === 0);
+}
+  
 function computeDecafPreference(){
   const qIndex = questions.findIndex(q=>{
     if(!q.preference) return false;
@@ -1034,7 +1037,9 @@ function goCalculate(){
   showScreen('loading');
   setTimeout(()=>{
     const userVec = computeUserVector();
-    const matchedType = matchType(userVec);
+    const matchedType = isZeroVector(userVec)
+  ? types.find(t => t.id === "I")
+  : matchType(userVec);
     const decafPref = computeDecafPreference();
     const [c1, c2] = recommendCoffees(userVec, decafPref);
     renderResult(matchedType, c1, c2);
