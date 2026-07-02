@@ -2,7 +2,7 @@
   {
     "id": "A",
     "name": "Test A",
-    "title": "산뜻한 산미형",
+    "title": "레몬 기사",
     "description": "첫 모금의 산뜻함과 깔끔한 마무리를 가장 중요하게 생각하는 타입입니다.",
     "keywords": ["산뜻함", "깔끔함", "밝은 산미"],
     "center_score": {"fruit":3,"floral":1,"nutty":0,"chocolate":0,"unique":1,"acidity":5,"sweetness":1,"body":1,"bitterness":0}
@@ -10,7 +10,7 @@
   {
     "id": "B",
     "name": "Test B",
-    "title": "화사한 플로럴형",
+    "title": "플로리스트",
     "description": "꽃향과 은은한 향미를 즐기며 부드럽고 우아한 커피를 선호하는 타입입니다.",
     "keywords": ["플로럴", "꽃향", "우아함"],
     "center_score": {"fruit":2,"floral":5,"nutty":0,"chocolate":0,"unique":1,"acidity":3,"sweetness":3,"body":1,"bitterness":0}
@@ -18,7 +18,7 @@
   {
     "id": "C",
     "name": "Test C",
-    "title": "과일 풍미형",
+    "title": "과일 수집가",
     "description": "과일처럼 달콤하고 상큼한 풍미를 가장 중요하게 생각하는 타입입니다.",
     "keywords": ["과일", "상큼함", "달콤함"],
     "center_score": {"fruit":5,"floral":1,"nutty":0,"chocolate":0,"unique":1,"acidity":1,"sweetness":5,"body":2,"bitterness":0}
@@ -26,7 +26,7 @@
   {
     "id": "D",
     "name": "Test D",
-    "title": "화려한 향미형",
+    "title": "연금술사",
     "description": "다양한 향과 개성 있는 향미를 경험하는 것을 즐기는 타입입니다.",
     "keywords": ["복합향", "화려함", "향미"],
     "center_score": {"fruit":3,"floral":2,"nutty":0,"chocolate":0,"unique":5,"acidity":2,"sweetness":2,"body":2,"bitterness":1}
@@ -34,7 +34,7 @@
   {
     "id": "E",
     "name": "Test E",
-    "title": "달콤한 고소형",
+    "title": "파티시에",
     "description": "부드러운 단맛과 편안한 고소함을 가장 선호하는 타입입니다.",
     "keywords": ["달콤함", "고소함", "부드러움"],
     "center_score": {"fruit":1,"floral":0,"nutty":2,"chocolate":1,"unique":0,"acidity":1,"sweetness":5,"body":2,"bitterness":0}
@@ -42,7 +42,7 @@
   {
     "id": "F",
     "name": "Test F",
-    "title": "견과류 고소형",
+    "title": "농부",
     "description": "견과류를 연상시키는 편안하고 안정적인 풍미를 선호하는 타입입니다.",
     "keywords": ["견과류", "고소함", "안정감"],
     "center_score": {"fruit":0,"floral":0,"nutty":5,"chocolate":1,"unique":1,"acidity":0,"sweetness":3,"body":4,"bitterness":2}
@@ -50,7 +50,7 @@
   {
     "id": "G",
     "name": "Test G",
-    "title": "초콜릿 고소형",
+    "title": "쇼콜라티에",
     "description": "초콜릿과 카카오를 떠올리게 하는 진한 풍미를 좋아하는 타입입니다.",
     "keywords": ["초콜릿", "카카오", "진한 풍미"],
     "center_score": {"fruit":0,"floral":0,"nutty":1,"chocolate":5,"unique":0,"acidity":0,"sweetness":4,"body":2,"bitterness":1}
@@ -58,7 +58,7 @@
   {
     "id": "H",
     "name": "Test H",
-    "title": "묵직한 바디형",
+    "title": "방패 전사",
     "description": "입안을 가득 채우는 묵직한 질감과 깊은 여운을 선호하는 타입입니다.",
     "keywords": ["바디감", "묵직함", "여운"],
     "center_score": {"fruit":0,"floral":0,"nutty":1,"chocolate":1,"unique":1,"acidity":1,"sweetness":2,"body":5,"bitterness":1}
@@ -66,7 +66,7 @@
   {
     "id": "I",
     "name": "Test I",
-    "title": "균형 잡힌 밸런스형",
+    "title": "여행자",
     "description": "어느 한쪽으로 치우치지 않은 조화로운 맛을 선호하는 타입입니다.",
     "keywords": ["균형", "조화", "밸런스"],
     "center_score": {"fruit":3,"floral":2,"nutty":2,"chocolate":2,"unique":1,"acidity":3,"sweetness":3,"body":3,"bitterness":1}
@@ -74,7 +74,7 @@
   {
     "id": "J",
     "name": "Test J",
-    "title": "개성 있는 향미형",
+    "title": "발명가",
     "description": "평소 쉽게 접하기 어려운 독특한 향과 개성 있는 커피를 즐기는 타입입니다.",
     "keywords": ["개성", "독특함", "실험적"],
     "center_score": {"fruit":0,"floral":0,"nutty":1,"chocolate":2,"unique":5,"acidity":1,"sweetness":1,"body":3,"bitterness":4}
@@ -82,7 +82,7 @@
   {
     "id": "K",
     "name": "Test K",
-    "title": "진한 쌉싸름형",
+    "title": "암흑 기사",
     "description": "진하고 묵직하면서 쌉싸름한 풍미를 즐기는 타입입니다.",
     "keywords": ["쌉싸름함", "진함", "묵직함"],
     "center_score": {"fruit":0,"floral":0,"nutty":1,"chocolate":2,"unique":1,"acidity":0,"sweetness":1,"body":3,"bitterness":5}
@@ -90,7 +90,7 @@
   {
     "id": "L",
     "name": "Test L",
-    "title": "클래식 다크형",
+    "title": "노련한 모험가",
     "description": "전통적인 다크 로스팅 스타일과 깊은 풍미를 선호하는 타입입니다.",
     "keywords": ["다크", "클래식", "깊은 풍미"],
     "center_score": {"fruit":0,"floral":0,"nutty":4,"chocolate":4,"unique":1,"acidity":0,"sweetness":2,"body":3,"bitterness":3}
