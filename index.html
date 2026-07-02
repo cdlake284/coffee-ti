@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>COFFEE TI | Coffee Expedition</title>
+
+<!-- Open Graph / 링크 미리보기 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="COFFEE TI | 나의 커피 취향 탐험">
+<meta property="og:description" content="설문을 통해 나만의 커피 취향 타입과 딱 맞는 원두를 찾아보세요.">
+<meta property="og:image" content="https://YOUR_USERNAME.github.io/YOUR_REPO/images/cover.png">
+<meta property="og:url" content="https://YOUR_USERNAME.github.io/YOUR_REPO/">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -484,6 +493,18 @@
 
   .result-actions{ display:flex; flex-direction:column; gap:10px; margin-top:4px; }
 
+  /* 다시 모험 떠나기 / 공유하기를 나란히, 동일 너비로 배치 */
+  .btn-row{
+    display:flex;
+    gap:10px;
+    width:100%;
+  }
+  .btn-row .btn-ghost{
+    flex:1 1 0;
+    width:auto;
+    margin-top:0;
+  }
+
   .footnote{
     text-align:center;
     color:var(--ink-dim);
@@ -577,7 +598,10 @@
 
     <div class="result-actions">
       <button class="btn-primary" id="btn-save">탐험 카드 저장하기</button>
-      <button class="btn-ghost" id="btn-restart">다시 모험 떠나기</button>
+      <div class="btn-row">
+        <button class="btn-ghost" id="btn-restart">다시 모험 떠나기</button>
+        <button class="btn-ghost" id="btn-share">공유하기</button>
+      </div>
     </div>
     
   </section>
@@ -681,6 +705,8 @@ async function loadData(){
 ========================================================= */
 let current = 0;
 let answers = []; // -2..2, sized once questions.json loads
+let currentResult = { typeId: null, c1Id: null, c2Id: null };
+let isSharedView = false;
 
 const screens = {
   start: document.getElementById('screen-start'),
@@ -785,6 +811,22 @@ loadData().then(()=>{
   if(startMetaCount) startMetaCount.textContent = questions.length;
   btnStartEl.disabled = false;
   btnStartLabel.textContent = btnStartOriginalText;
+
+  const params = new URLSearchParams(window.location.search);
+  const sharedTypeId = params.get('type');
+  const sharedC1 = params.get('c1');
+  const sharedC2 = params.get('c2');
+
+  if(sharedTypeId){
+    const type = types.find(t=> t.id === sharedTypeId);
+    const c1 = coffees.find(c=> String(c.id) === String(sharedC1));
+    const c2 = coffees.find(c=> String(c.id) === String(sharedC2));
+    if(type && c1){
+      isSharedView = true;
+      renderResult(type, c1, c2);
+      showScreen('result');
+    }
+  }
 }).catch(err=>{
   console.error('데이터를 불러오지 못했습니다', err);
   btnStartLabel.textContent = '데이터 로드 실패 - 새로고침 해주세요';
@@ -808,6 +850,8 @@ document.getElementById('btn-restart').addEventListener('click', ()=>{
   if(spriteTimer) clearInterval(spriteTimer);
   answers.fill(null);
   current = 0;
+  isSharedView = false;
+  history.replaceState(null, '', window.location.pathname); // ?type=... 제거
   showScreen('start');
 });
 
@@ -1014,6 +1058,8 @@ const [c1, c2] = recommendCoffees(userVec, decafPref);
 }
 
 function renderResult(type, c1, c2){
+  currentResult = { typeId: type.id, c1Id: c1 ? c1.id : null, c2Id: c2 ? c2.id : null };
+
   document.getElementById('type-title').textContent = type.title;
   document.getElementById('type-desc').textContent = type.description;
   const kw = document.getElementById('type-keywords');
@@ -1050,6 +1096,13 @@ function renderResult(type, c1, c2){
     card.querySelector('.coffee-body').innerHTML = radarSVG(MINI_AXES, c.taste_score, {size:150, width:118, pad:26});
     list.appendChild(card);
   });
+
+  const restartBtn = document.getElementById('btn-restart');
+  if(isSharedView){
+    restartBtn.textContent = '나도 취향 찾아보기';
+  } else {
+    restartBtn.textContent = '다시 모험 떠나기';
+  }
 }
 
 /* =========================================================
@@ -1130,6 +1183,41 @@ document.getElementById('btn-save').addEventListener('click', ()=>{
     console.error('탐험 카드 저장 실패', err);
   });
 });
+
+/* =========================================================
+   SHARE RESULT LINK
+========================================================= */
+function buildShareUrl(){
+  const url = new URL(window.location.origin + window.location.pathname);
+  if(currentResult.typeId) url.searchParams.set('type', currentResult.typeId);
+  if(currentResult.c1Id) url.searchParams.set('c1', currentResult.c1Id);
+  if(currentResult.c2Id) url.searchParams.set('c2', currentResult.c2Id);
+  return url.toString();
+}
+
+document.getElementById('btn-share').addEventListener('click', async ()=>{
+  const shareUrl = buildShareUrl();
+  const typeTitle = document.getElementById('type-title').textContent;
+  const shareData = {
+    title: 'COFFEE TI | 커피 취향 탐험',
+    text: `나의 커피 취향은 [${typeTitle}]! 당신의 커피 취향도 확인해보세요 🧭`,
+    url: shareUrl
+  };
+
+  if(navigator.share){
+    try{ await navigator.share(shareData); }
+    catch(err){ if(err && err.name !== 'AbortError') console.error('공유 실패', err); }
+    return;
+  }
+
+  try{
+    await navigator.clipboard.writeText(shareUrl);
+    alert('결과 링크가 복사되었습니다!');
+  }catch(err){
+    prompt('아래 링크를 복사해주세요', shareUrl);
+  }
+});
+
 </script>
 </body>
 </html>
