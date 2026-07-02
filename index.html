@@ -366,8 +366,7 @@
   /* ---------- RESULT SCREEN ---------- */
   #result-capture{ display:flex; flex-direction:column; gap:26px; padding-bottom:6px; }
   .result-head{ margin-top:20px; }
-  .result-head-flex{ display:flex; align-items:flex-start; gap:14px; }
-  .result-head-text{ flex:1; min-width:0; }
+  .title-row{ display:flex; align-items:center; gap:28px; }
   .result-head h2{
     font-size:clamp(24px,7vw,30px);
     font-style:italic;
@@ -392,22 +391,16 @@
     padding:5px 12px;
   }
 
-  .sprite-frame{
-    width:96px;
+  .sprite-inline{
+    width:86px;
+    height:auto;
     flex-shrink:0;
-    background:var(--surface);
-    border:1px solid var(--line);
-    border-radius:16px;
-    box-shadow:var(--shadow);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:10px;
+    image-rendering:pixelated;
+    display:block;
     animation:bob 1.6s ease-in-out infinite;
   }
-  .sprite-frame img{ width:100%; height:auto; image-rendering:pixelated; display:block; }
   @keyframes bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-6px); } }
-  @media (prefers-reduced-motion: reduce){ .sprite-frame{ animation:none; } }
+  @media (prefers-reduced-motion: reduce){ .sprite-inline{ animation:none; } }
 
   .radar-wrap{
     background:var(--surface);
@@ -571,17 +564,13 @@
       </div>
 
       <div class="result-head">
-        <div class="result-head-flex">
-          <div class="result-head-text">
-            <div class="eyebrow">나의 모험대원은</div>
-            <h2 id="type-title">-</h2>
-            <p id="type-desc">-</p>
-            <div class="keywords" id="type-keywords"></div>
-          </div>
-          <div class="sprite-frame">
-            <img id="sprite-img" src="" alt="원정대 캐릭터">
-          </div>
+        <div class="eyebrow">나의 모험대원은</div>
+        <div class="title-row">
+          <h2 id="type-title">-</h2>
+          <img id="sprite-img" class="sprite-inline" src="" alt="원정대 캐릭터">
         </div>
+        <p id="type-desc">-</p>
+        <div class="keywords" id="type-keywords"></div>
       </div>
 
       <div>
