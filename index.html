@@ -132,14 +132,32 @@
     background:linear-gradient(90deg, rgba(169,112,29,0.45), rgba(169,112,29,0));
   }
 
+  .headline-cloud{
+    position:relative;
+    margin-top:26px;
+    display:inline-block;
+    max-width:100%;
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-radius:32px;
+    padding:26px 26px 24px;
+    box-shadow:0 22px 40px rgba(92,138,160,0.20), 0 4px 10px rgba(92,138,160,0.10);
+    animation:cloud-float 6s ease-in-out infinite;
+  }
+  @keyframes cloud-float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-7px); }
+  }
+  @media (prefers-reduced-motion: reduce){ .headline-cloud{ animation:none; } }
+
   .start-top h1{
-    font-size:clamp(26px,7vw,34px);
+    font-size:clamp(24px,6.6vw,32px);
     line-height:1.32;
-    margin-top:16px;
+    margin:0;
     font-weight:700;
     letter-spacing:-0.02em;
     color:var(--forest);
-    text-shadow:0 2px 18px rgba(251,253,246,0.9), 0 1px 0 rgba(251,253,246,0.6);
   }
   .start-top p{
     color:var(--ink-dim);
@@ -498,7 +516,9 @@
         <div class="eyebrow">Coffee Expedition</div>
         <span class="eyebrow-line"></span>
       </div>
-      <h1>당신에게 가장 잘 맞는 커피를<br>찾아가는 모험을 떠나보세요</h1>
+      <div class="headline-cloud">
+        <h1>당신에게 가장 잘 맞는 커피를<br>찾아가는 모험을 떠나보세요</h1>
+      </div>
       <p></p>
     </div>
     <div class="start-cta">
