@@ -1050,5 +1050,747 @@
       "body": 3,
       "bitterness": 2
     }
+  },
+  {
+    "id": 36,
+    "name_ko": "인도 라트나기리 에스테이트 카투아이 DF 워시드 CR-179",
+    "name_en": "India Ratnagiri Estate Catuai DF Washed CR-179",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Catuai",
+      "CR-179"
+    ],
+    "process": "DF 워시드",
+    "cup_notes": [
+      "Green apple",
+      "Nuts",
+      "Chestnut",
+      "Maple syrup"
+    ],
+    "taste_score": {
+      "fruit": 1,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 1,
+      "sweetness": 2,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 37,
+    "name_ko": "인도 로부스타 A 카피 로얄 · 7월세일",
+    "name_en": "India Robusta A Kaapi Royale · July Sale",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Robusta"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Cereal",
+      "Barley",
+      "Corn",
+      "Bittersweet"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 3,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 38,
+    "name_ko": "인도 로부스타 카피 로얄 AA 워시드",
+    "name_en": "India Robusta Kaapi Royale AA Washed",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Robusta"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Barley",
+      "Corn",
+      "Cereal",
+      "Biscuit"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 4,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 39,
+    "name_ko": "인도 로부스타 카피 로얄 AA 워시드",
+    "name_en": "India Robusta Kaapi Royale AA Washed",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Robusta"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Barley",
+      "Rice",
+      "Corn",
+      "Cereal",
+      "Biscuit"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 5,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 5,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 40,
+    "name_ko": "인도 로부스타 카피로얄 AA 워시드",
+    "name_en": "India Robusta Kaapi Royal AA Washed",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Robusta"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Biscuit",
+      "Barley",
+      "Cereal",
+      "Corn"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 4,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 41,
+    "name_ko": "인도 로부스타 카피로얄 Scr 17up",
+    "name_en": "India Robusta Kaapi Royal Scr 17up",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Robusta"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Malt",
+      "Roasted almond",
+      "Cacao",
+      "Caramel"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 1,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 1,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 42,
+    "name_ko": "인도 리버데일 SL-9 워시드",
+    "name_en": "India Riverdale SL-9 Washed",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "SL-9"
+    ],
+    "process": "풀리 워시드",
+    "cup_notes": [
+      "Citrus",
+      "Roasted almond",
+      "Brown sugar",
+      "Milk chocolate"
+    ],
+    "taste_score": {
+      "fruit": 1,
+      "floral": 0,
+      "nutty": 1,
+      "chocolate": 2,
+      "unique": 0,
+      "acidity": 1,
+      "sweetness": 1,
+      "body": 0,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 43,
+    "name_ko": "인도 마이소르 너겟 엑스트라 볼드",
+    "name_en": "India Mysore Nuggets Extra Bold",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Arabica"
+    ],
+    "process": "워시드 아라비카",
+    "cup_notes": [
+      "Almond",
+      "Orange",
+      "Lime",
+      "Cacao nibs"
+    ],
+    "taste_score": {
+      "fruit": 2,
+      "floral": 0,
+      "nutty": 1,
+      "chocolate": 1,
+      "unique": 0,
+      "acidity": 2,
+      "sweetness": 0,
+      "body": 0,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 44,
+    "name_ko": "인도 마이소르 너겟 엑스트라 볼드",
+    "name_en": "India Mysore Nuggets Extra Bold",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Arabica"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Vanilla",
+      "Spice",
+      "Chamomile",
+      "Sweetcorn"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 2,
+      "nutty": 1,
+      "chocolate": 0,
+      "unique": 3,
+      "acidity": 0,
+      "sweetness": 2,
+      "body": 1,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 45,
+    "name_ko": "인도 마이소르 너겟 엑스트라 볼드",
+    "name_en": "India Mysore Nuggets Extra Bold",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Arabica"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Jujube",
+      "Citrus",
+      "Brown sugar",
+      "Brazil nut"
+    ],
+    "taste_score": {
+      "fruit": 1,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 1,
+      "sweetness": 2,
+      "body": 0,
+      "bitterness": 0
+    }
+  },
+  {
+    "id": 46,
+    "name_ko": "인도 마이소르 너겟 엑스트라 볼드 AA",
+    "name_en": "India Mysore Nuggets Extra Bold AA",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Arabica"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Mocha",
+      "Butter",
+      "Peanut",
+      "Spice"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 1,
+      "unique": 2,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 0,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 47,
+    "name_ko": "인도 마이소르 너겟 엑스트라 볼드 AA 2025/2026",
+    "name_en": "India Mysore Nuggets Extra Bold AA 2025/2026",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Arabica"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Butter",
+      "Cocoa",
+      "Peanut",
+      "Nutmeg"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 0,
+      "unique": 2,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 0,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 48,
+    "name_ko": "인도 마이소르 너겟 엑스트라 볼드 AA 워시드",
+    "name_en": "India Mysore Nuggets Extra Bold AA Washed",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Arabica"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "Barley",
+      "Pepper",
+      "Cereal",
+      "Corn",
+      "Cacao",
+      "Caramel"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 1,
+      "unique": 2,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 3,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 49,
+    "name_ko": "브라질 미나스 제라이스 바이아 아이린 블렌드 NY2/3 SC16/17",
+    "name_en": "Brazil Minas Gerais Bahia Irene Blend NY2/3 SC16/17",
+    "decaf": false,
+    "country_ko": "브라질",
+    "country_en": "Brazil",
+    "variety": [
+      "Catuai",
+      "Icatu"
+    ],
+    "process": "내추럴, 펄프드내추럴",
+    "cup_notes": [
+      "캐슈넛",
+      "바닐라",
+      "시트러스",
+      "밀크초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 1,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 2,
+      "sweetness": 3,
+      "body": 3,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 50,
+    "name_ko": "브라질 아라가오 카페 델라스 NY2/3 FC SC17/18",
+    "name_en": "Brazil Aragao café Delas NY2/3 FC SC17/18",
+    "decaf": false,
+    "country_ko": "브라질",
+    "country_en": "Brazil",
+    "variety": [
+      "Catuai"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "캐슈넛",
+      "시트러스",
+      "카라멜",
+      "다크초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 1,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 3,
+      "unique": 1,
+      "acidity": 2,
+      "sweetness": 2,
+      "body": 3,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 51,
+    "name_ko": "브라질 몬테 벨로 옐로우버본 FC SC16UP",
+    "name_en": "Brazil Monte Belo Yellow Bourbon FC SC16UP",
+    "decaf": false,
+    "country_ko": "브라질",
+    "country_en": "Brazil",
+    "variety": [
+      "Yellow Bourbon"
+    ],
+    "process": "펄프드내추럴",
+    "cup_notes": [
+      "아몬드",
+      "바닐라",
+      "카라멜",
+      "밀크초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 1,
+      "sweetness": 4,
+      "body": 3,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 52,
+    "name_ko": "브라질 미나스 제라이스 세하도 프리미엄 NY2 FC SC17/18",
+    "name_en": "Brazil Minas Gerais Cerrado Premium NY2 FC SC17/18",
+    "decaf": false,
+    "country_ko": "브라질",
+    "country_en": "Brazil",
+    "variety": [
+      "Catuai",
+      "Acaia",
+      "Mundo Novo"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "아몬드",
+      "몰트",
+      "토스트",
+      "브라운슈가"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 0,
+      "unique": 1,
+      "acidity": 1,
+      "sweetness": 3,
+      "body": 3,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 53,
+    "name_ko": "브라질 모지아나 프리미엄 NY2 FC SC17/18",
+    "name_en": "Brazil Mogiana Premium NY2 FC SC17/18",
+    "decaf": false,
+    "country_ko": "브라질",
+    "country_en": "Brazil",
+    "variety": [
+      "Catuai",
+      "Acaia",
+      "Mundo Novo"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "참깨",
+      "아몬드",
+      "토스트",
+      "초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 0,
+      "sweetness": 2,
+      "body": 3,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 54,
+    "name_ko": "브라질 미나스 제라이스 세하도 NY2 FC SC14/16",
+    "name_en": "Brazil Minas Gerais Cerrado NY2 FC SC14/16",
+    "decaf": false,
+    "country_ko": "브라질",
+    "country_en": "Brazil",
+    "variety": [
+      "Catuai",
+      "Acaia",
+      "Mundo Novo"
+    ],
+    "process": "내추럴",
+    "cup_notes": [
+      "아몬드",
+      "몰트",
+      "토스트",
+      "초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 4,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 0,
+      "sweetness": 2,
+      "body": 4,
+      "bitterness": 3
+    }
+  },
+  {
+    "id": 55,
+    "name_ko": "인도 말라바 몬순 AA",
+    "name_en": "India Malabar Monsoon AA",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Kent",
+      "Cauwery",
+      "San Ramom"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "스파이스",
+      "시더",
+      "보리차",
+      "옥수수"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 0,
+      "unique": 3,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 4,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 56,
+    "name_ko": "인도 마이소르 너겟 엑스트라 볼드 AA",
+    "name_en": "India Mysore Nugget Extra Bold AA",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "Cauvery",
+      "Kent mix"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "피넛",
+      "허브",
+      "몰트",
+      "카카오닙스"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 2,
+      "unique": 1,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 3,
+      "bitterness": 2
+    }
+  },
+  {
+    "id": 57,
+    "name_ko": "인도 로부스타 카피 로얄 AA",
+    "name_en": "India Robusta Kappi Royal AA",
+    "decaf": false,
+    "country_ko": "인도",
+    "country_en": "India",
+    "variety": [
+      "SL-274",
+      "Old Ceylon Robusta"
+    ],
+    "process": "워시드",
+    "cup_notes": [
+      "보리",
+      "옥수수",
+      "씨리얼",
+      "비스킷"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 0,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 3,
+      "bitterness": 1
+    }
+  },
+  {
+    "id": 58,
+    "name_ko": "인도네시아 술라웨시 토라자 G1",
+    "name_en": "Indonesia Sulawesi Toraja G1",
+    "decaf": false,
+    "country_ko": "인도네시아",
+    "country_en": "Indonesia",
+    "variety": [
+      "Lini S 795"
+    ],
+    "process": "세미워시드",
+    "cup_notes": [
+      "페퍼",
+      "시더",
+      "타바코",
+      "브라운슈가",
+      "몰트"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 2,
+      "chocolate": 0,
+      "unique": 4,
+      "acidity": 0,
+      "sweetness": 2,
+      "body": 4,
+      "bitterness": 3
+    }
+  },
+  {
+    "id": 59,
+    "name_ko": "인도네시아 수마트라 만델링 G1",
+    "name_en": "Indonesia Sumatra Mandheling G1",
+    "decaf": false,
+    "country_ko": "인도네시아",
+    "country_en": "Indonesia",
+    "variety": [
+      "Catimore",
+      "Typica",
+      "Sigararutang"
+    ],
+    "process": "웻헐드",
+    "cup_notes": [
+      "시더",
+      "스파이스",
+      "블랙티",
+      "다크초콜릿"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 1,
+      "chocolate": 4,
+      "unique": 3,
+      "acidity": 0,
+      "sweetness": 1,
+      "body": 5,
+      "bitterness": 4
+    }
+  },
+  {
+    "id": 60,
+    "name_ko": "베트남 로부스타 G1 SC18",
+    "name_en": "Vietnam Robusta G1 SC18",
+    "decaf": false,
+    "country_ko": "베트남",
+    "country_en": "Vietnam",
+    "variety": [
+      "Robusta"
+    ],
+    "process": "웻폴리쉬드",
+    "cup_notes": [
+      "옥수수",
+      "씨리얼",
+      "카카오닙스"
+    ],
+    "taste_score": {
+      "fruit": 0,
+      "floral": 0,
+      "nutty": 3,
+      "chocolate": 2,
+      "unique": 0,
+      "acidity": 0,
+      "sweetness": 0,
+      "body": 4,
+      "bitterness": 4
+    }
   }
 ]
