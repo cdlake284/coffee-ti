@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>커피 원정대 | Coffee Expedition</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   :root{
@@ -36,7 +34,7 @@
       radial-gradient(circle at 90% 94%, rgba(63,125,74,0.20), transparent 46%),
       var(--bg-vignette);
     color:var(--ink);
-    font-family:'IBM Plex Sans KR', sans-serif;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     min-height:100vh;
     display:flex;
     justify-content:center;
@@ -64,7 +62,7 @@
   
 
   .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     font-size:12px;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -80,7 +78,7 @@
     display:inline-block;
   }
 
-  h1,h2,h3{ font-family:'Fraunces', serif; margin:0; font-weight:600; }
+  h1,h2,h3{ font-family:'Pretendard Variable', Pretendard, sans-serif; margin:0; font-weight:600; }
 
   .screen{ display:none; flex-direction:column; flex:1; animation:fade .45s ease both; }
   .screen.active{ display:flex; }
@@ -93,13 +91,13 @@
     content:"";
     position:absolute;
     left:-22px; right:-22px; bottom:-40px;
-    height:90%;
+    height:92%;
     background:url('images/background/cover.png') center bottom / cover no-repeat;
-    -webkit-mask-image:linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.65) 16%, #000 34%);
-    mask-image:linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.65) 16%, #000 34%);
+    -webkit-mask-image:linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.55) 20%, #000 40%);
+    mask-image:linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.55) 20%, #000 40%);
     z-index:0;
   }
-  .start-top{ position:relative; z-index:1; }
+  .start-top{ position:relative; z-index:1; margin-top:30px; }
   .start-cta{
     position:relative;
     z-index:1;
@@ -107,15 +105,41 @@
     margin-bottom:32px;
   }
 
-.start-top{
-    margin-top:38px;
-}
+  .compass-badge{
+    width:52px; height:52px;
+    border-radius:50%;
+    background:linear-gradient(155deg, rgba(251,253,246,0.95), rgba(251,253,246,0.75));
+    border:1.5px solid rgba(169,112,29,0.35);
+    box-shadow:0 8px 18px rgba(50,74,40,0.14), inset 0 0 0 1px rgba(255,255,255,0.4);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .compass-icon{ width:26px; height:26px; color:var(--gold-ink); }
+
+  .eyebrow-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:16px;
+  }
+  .eyebrow-row .eyebrow{
+    letter-spacing:0.22em;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .eyebrow-line{
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, rgba(169,112,29,0.45), rgba(169,112,29,0));
+  }
+
   .start-top h1{
-    font-size:clamp(24px,6vw,32px);
-    line-height:1.25;
-    margin-top:14px;
-    font-style:italic;
-    font-weight:500;
+    font-size:clamp(26px,7vw,34px);
+    line-height:1.32;
+    margin-top:16px;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    color:var(--forest);
+    text-shadow:0 2px 18px rgba(251,253,246,0.9), 0 1px 0 rgba(251,253,246,0.6);
   }
   .start-top p{
     color:var(--ink-dim);
@@ -123,33 +147,36 @@
     line-height:1.65;
     margin-top:14px;
   }
-  .compass-icon{ width:40px; height:40px; color:var(--gold-ink); }
   .start-meta{
     display:flex;
     gap:18px;
     margin-top:28px;
-    font-family:'IBM Plex Mono', monospace;
     font-size:12px;
     color:var(--ink-dim);
   }
   .start-meta div{ display:flex; flex-direction:column; gap:4px; }
-  .start-meta b{ color:var(--ink); font-size:18px; font-family:'Fraunces',serif; }
+  .start-meta b{ color:var(--ink); font-size:18px; font-weight:700; }
 
   .btn-primary{
-    background:linear-gradient(135deg,var(--adventure),#c74a22);
+    background:linear-gradient(120deg,#3f7d4a 0%,#3f7d4a 45%,#c9862f 100%);
     color:var(--on-accent);
     border:none;
     border-radius:999px;
-    padding:17px 20px;
+    padding:17px 22px;
     font-size:16px;
     font-weight:600;
-    font-family:'IBM Plex Sans KR',sans-serif;
     width:100%;
     cursor:pointer;
-    box-shadow:0 12px 24px rgba(63,125,74,0.30);
+    box-shadow:0 14px 28px rgba(63,125,74,0.32), inset 0 1px 0 rgba(255,255,255,0.22);
     transition:transform .15s ease, box-shadow .15s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
   }
   .btn-primary:active{ transform:scale(0.98); box-shadow:0 6px 14px rgba(63,125,74,0.26); }
+  .btn-arrow{ width:18px; height:18px; flex-shrink:0; transition:transform .15s ease; }
+  .btn-primary:active .btn-arrow{ transform:translateX(3px); }
 
   .btn-ghost{
     background:transparent;
@@ -159,7 +186,7 @@
     padding:14px 18px;
     font-size:14px;
     font-weight:500;
-    font-family:'IBM Plex Sans KR',sans-serif;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     width:100%;
     cursor:pointer;
     margin-top:10px;
@@ -204,7 +231,7 @@
     transition:width .35s ease;
   }
   .q-count{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     font-size:12px;
     color:var(--ink-dim);
     white-space:nowrap;
@@ -229,7 +256,7 @@
   display:flex;
   align-items:center;
   gap:8px;
-  font-family:'IBM Plex Mono',monospace;
+  font-family:'Pretendard Variable', Pretendard, sans-serif;
   font-size:12.5px;
   color:var(--gold-ink);
   background:rgba(217,164,65,0.10);
@@ -256,7 +283,7 @@
     font-size:clamp(19px,5.4vw,22px);
     line-height:1.5;
     font-weight:600;
-    font-family:'Fraunces',serif;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     color:#111;
   }
   .scale-box{
@@ -315,7 +342,7 @@
   #screen-loading{ align-items:center; justify-content:center; text-align:center; gap:16px; }
   .brew-spinner{ width:56px; height:56px; animation:spin 1.4s linear infinite; }
   @keyframes spin{ to{ transform:rotate(360deg);} }
-  #screen-loading p{ color:var(--ink-dim); font-family:'IBM Plex Mono',monospace; font-size:13px; }
+  #screen-loading p{ color:var(--ink-dim); font-family:'Pretendard Variable', Pretendard, sans-serif; font-size:13px; }
 
   /* ---------- RESULT SCREEN ---------- */
   #result-capture{ display:flex; flex-direction:column; gap:26px; padding-bottom:6px; }
@@ -337,7 +364,7 @@
   }
   .keywords{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
   .keyword-chip{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     font-size:11.5px;
     color:var(--gold-ink);
     background:rgba(217,164,65,0.14);
@@ -374,7 +401,7 @@
     box-shadow:var(--shadow);
   }
   .radar-wrap .cap{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     font-size:11px;
     color:var(--ink-dim);
     letter-spacing:0.08em;
@@ -383,7 +410,7 @@
   }
 
   .section-label{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     font-size:12px;
     letter-spacing:0.1em;
     text-transform:uppercase;
@@ -406,7 +433,7 @@
     min-width:0;
   }
   .coffee-card .rank{
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     font-size:10px;
     color:var(--adventure);
   }
@@ -419,7 +446,7 @@
     color:var(--ink-dim);
     font-size:10.5px;
     margin-top:2px;
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     overflow-wrap:break-word;
   }
   .coffee-meta{
@@ -448,7 +475,7 @@
     text-align:center;
     color:var(--ink-dim);
     font-size:11px;
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'Pretendard Variable', Pretendard, sans-serif;
     margin-top:8px;
     opacity:0.7;
   }
@@ -460,17 +487,27 @@
   <!-- ================= START ================= -->
   <section class="screen active" id="screen-start">
     <div class="start-top">
-      <svg class="compass-icon" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="9.4" stroke="currentColor" stroke-width="1.4"/>
-        <path d="M15.2 8.8 13 13l-4.2 2.2L11 11l4.2-2.2Z" fill="currentColor"/>
-        <circle cx="12" cy="12" r="1.3" fill="currentColor"/>
-      </svg>
-      <div class="eyebrow">Coffee Expedition</div>
+      <div class="compass-badge">
+        <svg class="compass-icon" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9.4" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M15.2 8.8 13 13l-4.2 2.2L11 11l4.2-2.2Z" fill="currentColor"/>
+          <circle cx="12" cy="12" r="1.3" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="eyebrow-row">
+        <div class="eyebrow">Coffee Expedition</div>
+        <span class="eyebrow-line"></span>
+      </div>
       <h1>당신에게 가장 잘 맞는 커피를<br>찾아가는 모험을 떠나보세요</h1>
       <p></p>
     </div>
     <div class="start-cta">
-      <button class="btn-primary" id="btn-start">모험 시작하기</button>
+      <button class="btn-primary" id="btn-start">
+        <span>모험 시작하기</span>
+        <svg class="btn-arrow" viewBox="0 0 20 20" fill="none">
+          <path d="M4 10h11.5M10.5 5l5.5 5-5.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
   </section>
 
@@ -731,19 +768,20 @@ function selectAnswer(value){
 }
 
 const btnStartEl = document.getElementById('btn-start');
+const btnStartLabel = btnStartEl.querySelector('span');
 const startMetaCount = document.querySelector('.start-meta b');
 btnStartEl.disabled = true;
-const btnStartOriginalText = btnStartEl.textContent;
-btnStartEl.textContent = '불러오는 중...';
+const btnStartOriginalText = btnStartLabel.textContent;
+btnStartLabel.textContent = '불러오는 중...';
 
 loadData().then(()=>{
   answers = new Array(questions.length).fill(null);
   if(startMetaCount) startMetaCount.textContent = questions.length;
   btnStartEl.disabled = false;
-  btnStartEl.textContent = btnStartOriginalText;
+  btnStartLabel.textContent = btnStartOriginalText;
 }).catch(err=>{
   console.error('데이터를 불러오지 못했습니다', err);
-  btnStartEl.textContent = '데이터 로드 실패 - 새로고침 해주세요';
+  btnStartLabel.textContent = '데이터 로드 실패 - 새로고침 해주세요';
 });
 
 document.getElementById('btn-start').addEventListener('click', ()=>{
@@ -891,7 +929,7 @@ function radarSVG(axes, values, opts={}){
     const [x,y] = pointAt(i, 1);
     axesLines += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(46,32,19,0.16)" stroke-width="1"/>`;
     const [lx,ly] = pointAt(i, 1.16);
-    labels += `<text x="${lx}" y="${ly}" fill="#6d7c5f" font-size="10.5" font-family="IBM Plex Mono, monospace" text-anchor="middle" dominant-baseline="middle">${ax.label}</text>`;
+    labels += `<text x="${lx}" y="${ly}" fill="#6d7c5f" font-size="10.5" font-family="Pretendard Variable, Pretendard, sans-serif" text-anchor="middle" dominant-baseline="middle">${ax.label}</text>`;
   });
 
   // data polygon
