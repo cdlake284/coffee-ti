@@ -1,6 +1,6 @@
 [
-  {"id":1,"category":"산미","purpose":"산미 강도","question":"오렌지나 딸기처럼 상큼한 맛이 나는 커피에 더 끌린다.","effect_description":["Acidity 크게 증가"],"effect":{"fruit":0,"floral":0,"nutty":0,"chocolate":0,"unique":0,"acidity":2,"sweetness":0,"body":0,"bitterness":0}},
-  {"id":2,"category":"향미","purpose":"과일향 강도","question":"복숭아나 귤처럼 과일 향이 느껴지는 커피를 좋아한다..","effect_description":["Fruit 크게 증가"],"effect":{"fruit":2,"floral":0,"nutty":0,"chocolate":0,"unique":0,"acidity":0,"sweetness":0,"body":0,"bitterness":0}},
+  {"id":1,"category":"산미","purpose":"산미 강도","question":"귤이나 딸기처럼 새콤한 맛이 나는 커피에 더 끌린다.","effect_description":["Acidity 크게 증가"],"effect":{"fruit":0,"floral":0,"nutty":0,"chocolate":0,"unique":0,"acidity":2,"sweetness":0,"body":0,"bitterness":0}},
+  {"id":2,"category":"향미","purpose":"과일향 강도","question":"복숭아나 귤처럼 과일 향이 느껴지는 커피를 좋아한다.","effect_description":["Fruit 크게 증가"],"effect":{"fruit":2,"floral":0,"nutty":0,"chocolate":0,"unique":0,"acidity":0,"sweetness":0,"body":0,"bitterness":0}},
   {"id":3,"category":"향미","purpose":"꽃향 강도","question":"라벤더나 자스민 같은 은은한 꽃향이 느껴지는 커피를 선호하는 편이다.","effect_description":["Floral 크게 증가"],"effect":{"fruit":0,"floral":2,"nutty":0,"chocolate":0,"unique":0,"acidity":0,"sweetness":0,"body":0,"bitterness":0}},
   {"id":4,"category":"단맛","purpose":"단맛 강도","question":"설탕이나 꿀을 넣은 것처럼 달콤한 여운이 느껴지는 커피를 좋아한다.","effect_description":["Sweetness 크게 증가"],"effect":{"fruit":0,"floral":0,"nutty":0,"chocolate":0,"unique":0,"acidity":0,"sweetness":2,"body":0,"bitterness":0}},
   {"id":5,"category":"바디","purpose":"바디감 강도","question":"가볍고 맑은 커피보다 부드럽고 묵직한 커피가 더 만족스럽다.","effect_description":["Body 크게 증가"],"effect":{"fruit":0,"floral":0,"nutty":0,"chocolate":0,"unique":0,"acidity":0,"sweetness":0,"body":2,"bitterness":0}},
