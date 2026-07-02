@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>커피 원정대 | Coffee Expedition</title>
+<title>커피 TI | Coffee Expedition</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -1068,6 +1068,26 @@ function renderResult(type, c1, c2){
 document.getElementById('btn-save').addEventListener('click', ()=>{
   const target = document.getElementById('result-capture');
 
+  // 저장용 이미지에서만 상하좌우에 동일한 비율로 여백을 주기 위해, 캡처 직전에
+  // 잠깐 padding을 추가했다가 캡처가 끝나면 원래 상태로 되돌린다.
+  // (화면에 보이는 실제 결과 화면 레이아웃에는 영향 없음)
+  const prevPaddingLeft = target.style.paddingLeft;
+  const prevPaddingRight = target.style.paddingRight;
+  const prevPaddingTop = target.style.paddingTop;
+  const prevPaddingBottom = target.style.paddingBottom;
+  const CARD_PADDING = '20px';
+  target.style.paddingLeft = CARD_PADDING;
+  target.style.paddingRight = CARD_PADDING;
+  target.style.paddingTop = CARD_PADDING;
+  target.style.paddingBottom = CARD_PADDING;
+
+  const restorePadding = ()=>{
+    target.style.paddingLeft = prevPaddingLeft;
+    target.style.paddingRight = prevPaddingRight;
+    target.style.paddingTop = prevPaddingTop;
+    target.style.paddingBottom = prevPaddingBottom;
+  };
+
   // 모바일 브라우저는 캔버스 한 장의 크기(가로/세로 픽셀, 총 면적)에
   // 하드웨어적 상한이 있음 (대략 한 변 4096px, 총 약 1600만 픽셀).
   // 콘텐츠 높이가 긴 결과 화면에 scale:2를 무조건 곱하면 이 한도를
@@ -1085,10 +1105,10 @@ document.getElementById('btn-save').addEventListener('click', ()=>{
     scale,
     scrollX: 0,
     scrollY: -window.scrollY,
-    windowWidth: document.documentElement.scrollWidth,
     windowHeight: document.documentElement.scrollHeight,
     useCORS: true
   }).then(canvas=>{
+    restorePadding();
     canvas.toBlob(async (blob)=>{
       if(!blob) return;
       const file = new File([blob], 'coffee-flavor-profile.png', {type:'image/png'});
@@ -1115,6 +1135,9 @@ document.getElementById('btn-save').addEventListener('click', ()=>{
       link.click();
       setTimeout(()=> URL.revokeObjectURL(link.href), 4000);
     }, 'image/png');
+  }).catch(err=>{
+    restorePadding();
+    console.error('탐험 카드 저장 실패', err);
   });
 });
 </script>
