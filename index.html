@@ -168,6 +168,14 @@
     background:radial-gradient(circle at 50% 50%, #6E5130 0 18%, #B4956A 20% 40%, #D9C49A 42% 60%, #A88659 62%);
   }
   .scroll-roll .end.l{ left:-2px; } .scroll-roll .end.r{ right:-2px; }
+  /* 원정이 끝나면 양피지가 아래에서 위로 말려 올라가며 흰 결과 화면이 드러남 */
+  .paper-sheet{
+    position:fixed; top:0; z-index:38; pointer-events:none;
+    background-color:var(--bg); background-image:var(--paper);
+    background-size:480px 1200px; background-position:center top;
+    box-shadow:inset 0 0 64px rgba(120,78,34,.5), inset 0 0 12px rgba(90,58,24,.55);
+  }
+  #screen-result.active.hold .seq{ animation:none; opacity:0; }
   .scroll-lip{ position:fixed; z-index:39; height:10px; pointer-events:none; background:linear-gradient(180deg, rgba(60,40,18,.28), rgba(60,40,18,0)); }
   .btn-start{ margin-top:24px; justify-content:space-between; padding:0 22px; }
 
@@ -1096,7 +1104,8 @@ function clearRevealTimers(){
   revealTimers.forEach(clearTimeout);
   revealTimers = [];
   revealPhase = null;
-  document.querySelectorAll('.fly-treasure').forEach(el => el.remove());
+  document.querySelectorAll('.fly-treasure, .paper-sheet, .scroll-roll, .scroll-lip').forEach(el => el.remove());
+  screens.result.classList.remove('hold');
 }
 
 (function buildRays(){
@@ -1154,36 +1163,93 @@ function playReveal(type){
   later(typed + REVEAL_HOLD_MS, revealToResult);
 }
 
-// 보물이 결과 화면의 액자 자리로 날아가 앉는다
+// 두루마리 막대 + 아래 그림자 (시작·끝 전환에서 함께 사용)
+function createScrollRoll(){
+  const frameRect = frameEl.getBoundingClientRect();
+  const roll = document.createElement('div');
+  roll.className = 'scroll-roll';
+  roll.innerHTML = '<div class="cyl"></div><div class="end l"></div><div class="end r"></div>';
+  Object.assign(roll.style, { left:(frameRect.left - 6)+'px', width:(frameRect.width + 12)+'px' });
+  const lip = document.createElement('div');
+  lip.className = 'scroll-lip';
+  Object.assign(lip.style, { left:frameRect.left+'px', width:frameRect.width+'px' });
+  document.body.append(lip, roll);
+  return { roll, lip, frameRect };
+}
+
+// 보물 등장 → (보물은 공중에) 양피지가 아래에서 위로 말려 올라감 → 보물이 결과 액자에 내려앉음
+const ROLLUP_FADE_MS = 300, ROLLUP_MS = 1300;
 function revealToResult(){
   if(revealPhase !== 'reveal') return;
   revealPhase = 'done';
   revealTimers.forEach(clearTimeout);
   revealTimers = [];
 
-  const from = document.getElementById('reveal-img').getBoundingClientRect();
-  const sprite = document.getElementById('sprite-img');
-  sprite.classList.add('waiting');
-  screens.result.classList.add('no-fade');
-  showScreen('result');
-  const to = sprite.getBoundingClientRect();
+  // 1) 빛줄기·문구·상자를 걷고 보물만 남김
+  ['reveal-rays', 'reveal-place', 'reveal-name', 'reveal-tap', 'reveal-chest'].forEach(id=>{
+    const el = document.getElementById(id);
+    el.style.transition = `opacity ${ROLLUP_FADE_MS}ms ease`;
+    el.style.opacity = '0';
+  });
 
-  const fly = document.createElement('img');
-  fly.className = 'fly-treasure';
-  fly.alt = '';
-  fly.src = spriteFrameSrc;
-  Object.assign(fly.style, { left: from.left+'px', top: from.top+'px', width: from.width+'px', height: from.height+'px' });
-  document.body.appendChild(fly);
-  void fly.offsetWidth;
-  Object.assign(fly.style, { left: to.left+'px', top: to.top+'px', width: to.width+'px', height: to.height+'px' });
+  later(ROLLUP_FADE_MS, ()=>{
+    const revealImg = document.getElementById('reveal-img');
+    const from = revealImg.getBoundingClientRect();
+    const fly = document.createElement('img');
+    fly.className = 'fly-treasure';
+    fly.alt = '';
+    fly.src = spriteFrameSrc;
+    Object.assign(fly.style, { left: from.left+'px', top: from.top+'px', width: from.width+'px', height: from.height+'px' });
+    document.body.appendChild(fly);
 
-  const land = ()=>{
-    sprite.classList.remove('waiting');
-    fly.remove();
-    screens.result.classList.remove('no-fade');
-  };
-  fly.addEventListener('transitionend', e => { if(e.propertyName === 'left') land(); }, { once:false });
-  later(1200, ()=>{ if(fly.isConnected) land(); }); // transitionend 누락 대비
+    // 2) 아래에는 흰 결과 화면을 깔고, 그 위를 양피지 한 장이 덮은 상태에서 말아 올림
+    const sprite = document.getElementById('sprite-img');
+    sprite.classList.add('waiting');
+    screens.result.classList.add('no-fade', 'hold');
+    showScreen('result');
+    const { roll, lip, frameRect } = createScrollRoll();
+    const H = window.innerHeight;
+    const sheet = document.createElement('div');
+    sheet.className = 'paper-sheet';
+    Object.assign(sheet.style, { left:frameRect.left+'px', width:frameRect.width+'px', height:H+'px' });
+    document.body.appendChild(sheet);
+
+    let t0 = null;
+    const step = ts => {
+      if(t0 === null) t0 = ts;
+      const t = Math.min(1, (ts - t0) / ROLLUP_MS), p = easeInOutCubic(t);
+      const y = H * (1 - p), h = 16 + 30 * p;      // 말려 올라갈수록 두루마리가 굵어짐
+      roll.style.height = h + 'px';
+      roll.style.top = (y - h / 2) + 'px';
+      lip.style.top = (y + h / 2 - 2) + 'px';
+      sheet.style.clipPath = `inset(0 0 ${Math.max(0, H - y)}px 0)`;
+      if(t < 1){ requestAnimationFrame(step); return; }
+      sheet.remove();
+      lip.remove();
+      roll.style.transition = 'opacity .25s ease, transform .35s ease';
+      roll.style.opacity = '0';
+      roll.style.transform = 'translateY(-20px)';
+      setTimeout(()=> roll.remove(), 360);
+
+      // 3) 보물이 결과 화면 액자에 내려앉고, 나머지 기록이 차례로 나타남
+      const to = sprite.getBoundingClientRect();
+      void fly.offsetWidth;
+      Object.assign(fly.style, { left: to.left+'px', top: to.top+'px', width: to.width+'px', height: to.height+'px' });
+      const land = ()=>{
+        if(!fly.isConnected) return;
+        sprite.classList.remove('waiting');
+        fly.remove();
+        screens.result.classList.remove('hold', 'no-fade');
+        ['reveal-rays', 'reveal-place', 'reveal-name', 'reveal-tap', 'reveal-chest'].forEach(id=>{
+          const el = document.getElementById(id);
+          el.style.transition = ''; el.style.opacity = '';
+        });
+      };
+      fly.addEventListener('transitionend', e => { if(e.propertyName === 'left') land(); });
+      later(1200, land); // transitionend 누락 대비
+    };
+    requestAnimationFrame(step);
+  });
 }
 
 screens.reveal.addEventListener('click', revealToResult);
