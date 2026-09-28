@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>COFFEE TI | 나의 커피 취향 찾기</title>
+<title>COFFEE TI | 아로마 제도 커피 원정</title>
 
 <!-- Open Graph / 링크 미리보기 -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="COFFEE TI | 나의 커피 취향 찾기">
-<meta property="og:description" content="14개의 질문으로 나의 커피 취향 타입과 잘 맞는 원두를 찾아보세요.">
-<meta property="og:image" content="https://cdlake284.github.io/coffee-ti/images/background/cover.png">
+<meta property="og:title" content="COFFEE TI | 아로마 제도 커피 원정">
+<meta property="og:description" content="14개의 스테이지를 지나 아로마 제도에 잠든 나의 커피 보물을 찾아보세요.">
+<meta name="description" content="14개의 스테이지를 지나 아로마 제도에 잠든 나의 커피 보물을 찾아보세요.">
+<meta property="og:image" content="https://cdlake284.github.io/coffee-ti/images/background/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://cdlake284.github.io/coffee-ti/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2E2318">
@@ -1641,7 +1644,7 @@ btnSave.addEventListener('click', async ()=>{
     // 모바일(iOS/Android): 네이티브 공유 시트로 "사진에 저장"까지 한번에
     if(navigator.canShare && navigator.canShare({files:[file]})){
       try{
-        await navigator.share({ files:[file], title:'COFFEE TI 결과', text:'나의 커피 취향 결과' });
+        await navigator.share({ files:[file], title:'COFFEE TI 발견 기록', text:`아로마 제도에서 발견한 나의 커피 보물 [${lastRender.type.title}]` });
         return;
       }catch(err){
         if(err && err.name === 'AbortError') return; // 사용자가 공유 취소
@@ -1662,6 +1665,14 @@ btnSave.addEventListener('click', async ()=>{
 /* =========================================================
    SHARE RESULT LINK
 ========================================================= */
+// 받침 유무에 따라 을/를 (등불을, 모래시계를)
+function objectParticle(word){
+  const last = String(word || '').trim().slice(-1);
+  const code = last.charCodeAt(0) - 0xAC00;
+  if(code < 0 || code > 11171) return '를';
+  return code % 28 ? '을' : '를';
+}
+
 function buildShareUrl(){
   const url = new URL(window.location.origin + window.location.pathname);
   if(currentResult.typeId) url.searchParams.set('type', currentResult.typeId);
@@ -1676,8 +1687,8 @@ document.getElementById('btn-share').addEventListener('click', async ()=>{
   const shareUrl = buildShareUrl();
   const typeTitle = document.getElementById('type-title').textContent;
   const shareData = {
-    title: 'COFFEE TI | 나의 커피 취향',
-    text: `나의 커피 취향은 [${typeTitle}] — 당신의 커피 취향도 확인해보세요.`,
+    title: 'COFFEE TI | 아로마 제도 커피 원정',
+    text: `아로마 제도에서 [${typeTitle}]${objectParticle(typeTitle)} 발견했어요. 당신의 커피 보물도 찾아보세요.`,
     url: shareUrl
   };
 
