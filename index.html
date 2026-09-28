@@ -1039,16 +1039,6 @@ function matchPercent(userVec, coffee){
   return Math.min(100, Math.max(0, Math.round((s + 1) / 2 * 100)));
 }
 
-// 취향 지도용: 가장 높은 항목을 5로 맞춰 비례 환산, 마이너스는 0
-function normalizeForMap(vec){
-  const out = {};
-  const maxPos = Math.max(0, ...TRAITS.map(t => vec[t] || 0));
-  TRAITS.forEach(t=>{
-    out[t] = maxPos > 0 ? Math.max(0, vec[t] || 0) / maxPos * 5 : 0;
-  });
-  return out;
-}
-
 function parseVecParam(str){
   if(!str) return null;
   const arr = str.split(',').map(Number);
@@ -1059,19 +1049,8 @@ function parseVecParam(str){
 }
 
 /* =========================================================
-   RADAR CHART (SVG)
+   RADAR CHART (SVG · 원두 카드의 4축 미니 차트)
 ========================================================= */
-const MAIN_AXES = [
-  {key:'acidity', label:'산미'},
-  {key:'sweetness', label:'단맛'},
-  {key:'body', label:'바디'},
-  {key:'bitterness', label:'쓴맛'},
-  {key:'fruit', label:'과일'},
-  {key:'floral', label:'플로럴'},
-  {key:'unique', label:'개성'},
-  {key:'nutty', label:'고소함'},
-  {key:'chocolate', label:'초콜릿'}
-];
 const MINI_AXES = [
   {key:'acidity', label:'산미'},
   {key:'sweetness', label:'단맛'},
@@ -1112,14 +1091,6 @@ function radarSVG(axes, series, opts={}){
     out += `<text x="${f(x)}" y="${f(y)}" fill="${COLORS.muted}" font-size="${opts.labelSize || 11}" font-family="Hahmlet, serif" text-anchor="middle" dominant-baseline="middle">${ax.label}</text>`;
   });
   return `<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="${esc(opts.ariaLabel || '맛 레이더 차트')}">${out}</svg>`;
-}
-
-function tasteMapSeries(type, userVec){
-  const series = [{ values: type.center_score, stroke: COLORS.ink, width: 1, dash: '3 2.5' }];
-  if(userVec){
-    series.push({ values: normalizeForMap(userVec), stroke: COLORS.accent, width: 1.5, fill: COLORS.accent, fillOpacity: 0.08 });
-  }
-  return series;
 }
 
 /* =========================================================
@@ -1340,12 +1311,12 @@ function renderResult(type, c1, c2, userVec){
 }
 
 /* =========================================================
-   SHARE CARD (1080 x 1350, Canvas로 직접 그림)
-   ※ 새 톤에 맞춘 카드 디자인은 5단계에서 다시 그림
+   SHARE CARD (1080 x 1350, Canvas로 직접 그림 · 보물 발견 기록)
 ========================================================= */
 const CARD_W = 1080, CARD_H = 1350;
 const SANS = "'Hahmlet', 'Apple SD Gothic Neo', 'Malgun Gothic', serif";
 const MONO = "'IM Fell English', 'Hahmlet', serif";
+const CAPS = "'IM Fell English SC', 'IM Fell English', 'Hahmlet', serif";
 
 function loadImage(src){
   return new Promise(resolve=>{
@@ -1358,7 +1329,7 @@ function loadImage(src){
 
 async function ensureCardFonts(sample){
   if(!document.fonts || !document.fonts.load) return;
-  const specs = [`300 26px ${SANS}`, `400 26px ${SANS}`, `600 30px ${SANS}`, `400 22px ${MONO}`, `400 28px ${MONO}`];
+  const specs = [`400 24px ${SANS}`, `500 26px ${SANS}`, `600 30px ${SANS}`, `400 22px ${MONO}`, `400 26px ${CAPS}`];
   try{
     await Promise.all(specs.map(s => document.fonts.load(s, sample)));
   }catch(e){ /* 폰트 로드 실패 시 시스템 폰트로 그림 */ }
@@ -1368,11 +1339,12 @@ function drawSpaced(ctx, text, x, y, spacing, align='left'){
   const chars = [...text];
   const widths = chars.map(ch => ctx.measureText(ch).width);
   const total = widths.reduce((a,b)=>a+b, 0) + spacing * (chars.length - 1);
-  let cx = align === 'right' ? x - total : x;
+  let cx = align === 'right' ? x - total : (align === 'center' ? x - total / 2 : x);
   const prevAlign = ctx.textAlign;
   ctx.textAlign = 'left';
   chars.forEach((ch, i)=>{ ctx.fillText(ch, cx, y); cx += widths[i] + spacing; });
   ctx.textAlign = prevAlign;
+  return total;
 }
 
 function wrapLines(ctx, text, maxW, maxLines){
@@ -1408,194 +1380,236 @@ function hLine(ctx, x1, x2, y, color, w){
   ctx.fillRect(x1, y - w/2, x2 - x1, w);
 }
 
-function drawRadarCanvas(ctx, cx, cy, r, axes, series, labelPx){
-  const n = axes.length;
-  const path = ratioAt => {
-    ctx.beginPath();
-    axes.forEach((ax,i)=>{
-      const [x,y] = radarPoint(i, n, ratioAt(ax), cx, cy, r);
-      i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
-    });
-    ctx.closePath();
+// 같은 결과는 같은 무늬가 나오도록 시드 고정 난수
+function seededRandom(seed){
+  let t = seed >>> 0;
+  return ()=>{ t += 0x6D2B79F5; let r = Math.imul(t ^ t >>> 15, 1 | t); r ^= r + Math.imul(r ^ r >>> 7, 61 | r); return ((r ^ r >>> 14) >>> 0) / 4294967296; };
+}
+
+// 양피지 바탕: 얼룩 · 종이 결 · 그을린 가장자리
+function drawParchment(ctx, w, h){
+  const rand = seededRandom(20260928);
+  ctx.fillStyle = COLORS.bg;
+  ctx.fillRect(0, 0, w, h);
+  for(let i = 0; i < 70; i++){
+    const x = rand() * w, y = rand() * h, r = 60 + rand() * 220;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    const light = rand() < .35;
+    g.addColorStop(0, light ? 'rgba(250,238,205,.35)' : `rgba(150,105,50,${(.03 + rand() * .06).toFixed(3)})`);
+    g.addColorStop(1, 'rgba(150,105,50,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  const img = ctx.getImageData(0, 0, w, h), d = img.data;
+  for(let i = 0; i < d.length; i += 4){
+    const n = (rand() - .5) * 16;
+    d[i] += n; d[i+1] += n * .9; d[i+2] += n * .7;
+  }
+  ctx.putImageData(img, 0, 0);
+  const edge = (x0, y0, x1, y1)=>{
+    const g = ctx.createLinearGradient(x0, y0, x1, y1);
+    g.addColorStop(0, 'rgba(110,70,30,.55)');
+    g.addColorStop(.35, 'rgba(120,78,34,.18)');
+    g.addColorStop(1, 'rgba(120,78,34,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
   };
-  ctx.lineJoin = 'round';
-  [1, 0.5].forEach(ratio=>{
-    path(()=>ratio);
-    ctx.strokeStyle = ratio === 1 ? COLORS.line : COLORS.soft;
-    ctx.lineWidth = 2;
-    ctx.setLineDash([]);
-    ctx.stroke();
-  });
-  ctx.strokeStyle = COLORS.soft; ctx.lineWidth = 2;
-  axes.forEach((ax,i)=>{
-    const [x,y] = radarPoint(i, n, 1, cx, cy, r);
-    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y); ctx.stroke();
-  });
-  series.forEach(s=>{
-    path(ax => Math.min(Math.max(s.values[ax.key]||0, 0), 5)/5);
-    if(s.fill){
-      ctx.globalAlpha = s.fillOpacity ?? 0.1;
-      ctx.fillStyle = s.fill;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    }
-    ctx.setLineDash(s.dash ? s.dash.split(' ').map(v => Number(v) * 2) : []);
-    ctx.strokeStyle = s.stroke;
-    ctx.lineWidth = (s.width || 1.5) * 2;
-    ctx.stroke();
-  });
-  ctx.setLineDash([]);
-  ctx.font = `400 ${labelPx}px ${SANS}`;
-  ctx.fillStyle = COLORS.muted;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  axes.forEach((ax,i)=>{
-    const [x,y] = radarPoint(i, n, 1.2, cx, cy, r);
-    ctx.fillText(ax.label, x, y);
-  });
+  edge(0, 0, 150, 0); edge(w, 0, w - 150, 0); edge(0, 0, 0, 150); edge(0, h, 0, h - 150);
+}
+
+function strokeDashedLine(ctx, x1, x2, y, color, w, dash){
+  ctx.save();
+  ctx.strokeStyle = color; ctx.lineWidth = w; ctx.setLineDash(dash);
+  ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y); ctx.stroke();
+  ctx.restore();
+}
+
+// 원두 카드 한 장 (결과 화면 카드와 같은 구성, 높이 고정)
+const BEAN_CARD_H = 268;
+function drawBeanCard(ctx, b, idx, x, y, w){
+  const c = b.coffee, main = idx === 0;
+  const h = BEAN_CARD_H, pad = 22;
+  ctx.fillStyle = main ? 'rgba(255,248,230,.42)' : 'rgba(255,248,230,.24)';
+  ctx.fillRect(x, y, w, h);
+  ctx.lineWidth = 2;
+  if(main){
+    ctx.strokeStyle = 'rgba(59,42,26,.3)';
+    ctx.strokeRect(x - 7, y - 7, w + 14, h + 14);
+  }
+  ctx.strokeStyle = main ? COLORS.ink : 'rgba(59,42,26,.45)';
+  ctx.strokeRect(x + 1, y + 1, w - 2, h - 2);
+
+  const ix = x + pad, iw = w - pad * 2, top = y + 18;
+  // 순위 · 역할
   ctx.textAlign = 'left';
-  ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = COLORS.accent;
+  ctx.font = `400 34px ${MONO}`;
+  ctx.fillText(pad2(idx + 1), ix, top + 28);
+  ctx.fillStyle = COLORS.muted;
+  ctx.font = `400 20px ${SANS}`;
+  ctx.fillText(BEAN_ROLE[idx] || '', ix, top + 58);
+  // 매칭률
+  if(b.match !== null){
+    ctx.textAlign = 'right';
+    ctx.font = `400 20px ${CAPS}`;
+    ctx.fillText('Match', ix + iw, top + 16);
+    ctx.fillStyle = COLORS.accent;
+    ctx.font = `400 ${main ? 52 : 42}px ${MONO}`;
+    ctx.fillText(`${b.match}%`, ix + iw, top + 62);
+    ctx.textAlign = 'left';
+  }
+  const dashY = top + 76;
+  strokeDashedLine(ctx, ix, ix + iw, dashY, 'rgba(59,42,26,.35)', 2, [6, 5]);
+  // 이름 (두 줄 고정)
+  ctx.fillStyle = COLORS.ink;
+  ctx.font = `600 26px ${SANS}`;
+  wrapLines(ctx, c.name_ko, iw, 2).forEach((ln, k) => ctx.fillText(ln, ix, dashY + 38 + k * 35));
+  // 산지 · 가공
+  const metaY = dashY + 38 + 70 + 4;
+  ctx.fillStyle = COLORS.ink2;
+  ctx.font = `400 20px ${SANS}`;
+  const meta = [c.country_ko, c.process].filter(Boolean).join(' · ') + (c.decaf ? ' · 디카페인' : '');
+  ctx.fillText(wrapLines(ctx, meta, iw, 1)[0] || '', ix, metaY);
+  // 컵노트 태그 (한 줄에 들어가는 만큼)
+  ctx.font = `400 18px ${SANS}`;
+  let tx = ix;
+  const tagTop = metaY + 14, tagH = 32;
+  for(const note of (c.cup_notes || [])){
+    const tw = ctx.measureText(note).width + 22;
+    if(tx + tw > ix + iw) break;
+    ctx.fillStyle = 'rgba(255,248,230,.5)';
+    ctx.fillRect(tx, tagTop, tw, tagH);
+    ctx.strokeStyle = 'rgba(59,42,26,.32)'; ctx.lineWidth = 2;
+    ctx.strokeRect(tx + 1, tagTop + 1, tw - 2, tagH - 2);
+    ctx.fillStyle = COLORS.ink;
+    ctx.fillText(note, tx + 11, tagTop + 23);
+    tx += tw + 8;
+  }
 }
 
 async function buildShareCardBlob(){
   if(!lastRender) return null;
-  const { type, beans, userVec } = lastRender;
+  const { type, beans } = lastRender;
 
-  const sample = [type.title, type.description, (type.keywords||[]).join(' '),
+  const sample = [type.title, type.legend, type.description, (type.keywords||[]).join(' '), placeLabel(type), '보물과 함께 발견한 원두 가장 잘 맞는 원두 함께 마셔볼 원두 디카페인',
     ...beans.map(b => [b.coffee.name_ko, b.coffee.country_ko, b.coffee.process, (b.coffee.cup_notes||[]).join(' ')].join(' ')),
-    '나 기준 디카페인 MY TASTE PROFILE YOUR TASTE TYPE MATCH 0123456789%·/…'].join(' ');
-  const [, charImg] = await Promise.all([ensureCardFonts(sample), loadImage(spriteFrames(type.id)[0])]);
+    'Coffee TI Expedition Log Match 0123456789%·/…“”'].join(' ');
+  const [, treasureImg] = await Promise.all([ensureCardFonts(sample), loadImage(spriteFrames(type.id)[0])]);
 
   const canvas = document.createElement('canvas');
   canvas.width = CARD_W; canvas.height = CARD_H;
   const ctx = canvas.getContext('2d');
-  const L = 80, R = 1000;
+  const L = 80, R = 1000, CX = CARD_W / 2;
 
-  ctx.fillStyle = COLORS.bg;
-  ctx.fillRect(0, 0, CARD_W, CARD_H);
+  drawParchment(ctx, CARD_W, CARD_H);
 
-  // 상단 바
+  // 상단 바 (두 줄 괘선)
+  ctx.textAlign = 'left';
   ctx.fillStyle = COLORS.ink;
-  ctx.font = `400 28px ${MONO}`;
-  drawSpaced(ctx, 'COFFEE TI', L, 108, 3.4);
+  ctx.font = `400 34px ${CAPS}`;
+  drawSpaced(ctx, 'Coffee TI', L, 112, 3);
   ctx.fillStyle = COLORS.muted;
-  ctx.font = `400 22px ${MONO}`;
-  drawSpaced(ctx, 'MY TASTE PROFILE', R, 106, 1.8, 'right');
-  hLine(ctx, L, R, 134, COLORS.ink, 2);
+  ctx.font = `400 26px ${CAPS}`;
+  drawSpaced(ctx, 'Expedition Log', R, 110, 1, 'right');
+  hLine(ctx, L, R, 138, COLORS.ink, 2);
+  hLine(ctx, L, R, 145, 'rgba(59,42,26,.42)', 2);
 
-  // 캐릭터 프레임
-  const fs = 184, fx = R - fs, fy = 176;
-  ctx.fillStyle = COLORS.surface;
+  // 발견 장소
+  ctx.fillStyle = COLORS.accent;
+  ctx.font = `400 28px ${SANS}`;
+  ctx.textAlign = 'center';
+  const place = placeLabel(type);
+  ctx.fillText(place, CX, 206);
+  const pw = ctx.measureText(place).width;
+  ctx.globalAlpha = .6;
+  hLine(ctx, CX - pw/2 - 80, CX - pw/2 - 20, 197, COLORS.accent, 2);
+  hLine(ctx, CX + pw/2 + 20, CX + pw/2 + 80, 197, COLORS.accent, 2);
+  ctx.globalAlpha = 1;
+
+  // 보물 액자
+  const fs = 260, fx = CX - fs/2, fy = 234;
+  ctx.fillStyle = 'rgba(255,248,230,.42)';
   ctx.fillRect(fx, fy, fs, fs);
-  ctx.strokeStyle = COLORS.soft; ctx.lineWidth = 2;
-  for(let g = 20; g < fs; g += 20){
+  ctx.strokeStyle = 'rgba(59,42,26,.1)'; ctx.lineWidth = 2;
+  for(let g = 26; g < fs; g += 26){
     ctx.beginPath(); ctx.moveTo(fx + g, fy); ctx.lineTo(fx + g, fy + fs); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(fx, fy + g); ctx.lineTo(fx + fs, fy + g); ctx.stroke();
   }
-  ctx.strokeStyle = COLORS.ink; ctx.lineWidth = 2;
+  ctx.strokeStyle = COLORS.ink;
   ctx.strokeRect(fx + 1, fy + 1, fs - 2, fs - 2);
-  if(charImg){
-    const s = Math.min(148 / charImg.naturalWidth, 148 / charImg.naturalHeight);
-    const w = charImg.naturalWidth * s, h = charImg.naturalHeight * s;
+  ctx.strokeStyle = 'rgba(59,42,26,.42)';
+  ctx.strokeRect(fx - 9, fy - 9, fs + 18, fs + 18);
+  if(treasureImg){
+    const s = 224;
     ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(charImg, fx + (fs - w)/2, fy + (fs - h)/2, w, h);
+    ctx.drawImage(treasureImg, CX - s/2, fy + (fs - s)/2, s, s);
     ctx.imageSmoothingEnabled = true;
   }
 
-  // 타입
-  const textW = fx - L - 36;
-  ctx.fillStyle = COLORS.accent;
-  ctx.font = `400 22px ${MONO}`;
-  drawSpaced(ctx, 'YOUR TASTE TYPE', L, 204, 4);
-  let titlePx = 76;
+  // 보물 이름
+  let y = fy + fs + 22 + 56;
+  let titlePx = 62;
+  ctx.fillStyle = COLORS.ink;
   ctx.font = `600 ${titlePx}px ${SANS}`;
-  while(ctx.measureText(type.title).width > textW && titlePx > 48){
-    titlePx -= 4; ctx.font = `600 ${titlePx}px ${SANS}`;
+  while(ctx.measureText(type.title).width > R - L && titlePx > 40){
+    titlePx -= 2; ctx.font = `600 ${titlePx}px ${SANS}`;
   }
-  ctx.fillStyle = COLORS.ink;
-  ctx.fillText(type.title, L, 292);
+  ctx.fillText(type.title, CX, y);
 
-  ctx.font = `400 26px ${SANS}`;
+  // 한 줄 전설
+  if(type.legend){
+    ctx.fillStyle = COLORS.muted;
+    ctx.font = `400 24px ${SANS}`;
+    const lg = wrapLines(ctx, `“${type.legend}”`, 860, 2);
+    y += 12;
+    lg.forEach(ln => { y += 37; ctx.fillText(ln, CX, y); });
+  }
+
+  // 맛 설명
   ctx.fillStyle = COLORS.ink2;
-  const descLines = wrapLines(ctx, type.description, textW, 2);
-  descLines.forEach((ln, i) => ctx.fillText(ln, L, 356 + i * 40));
-  ctx.fillStyle = COLORS.ink;
-  ctx.fillText((type.keywords || []).join('  /  '), L, 356 + descLines.length * 40 + 22);
+  ctx.font = `400 28px ${SANS}`;
+  y += 22;
+  wrapLines(ctx, type.description, R - L, 2).forEach(ln => { y += 43; ctx.fillText(ln, CX, y); });
 
-  hLine(ctx, L, R, 500, COLORS.line, 2);
-
-  // 취향 지도
-  const bx = L, by = 540, bs = 440;
-  ctx.fillStyle = COLORS.surface;
-  ctx.fillRect(bx, by, bs, bs);
-  ctx.strokeStyle = COLORS.line; ctx.lineWidth = 2;
-  ctx.strokeRect(bx + 1, by + 1, bs - 2, bs - 2);
-  drawRadarCanvas(ctx, bx + bs/2, by + bs/2, 150, MAIN_AXES, tasteMapSeries(type, userVec), 22);
-
-  // 범례
-  let lx = bx;
-  const ly = by + bs + 44;
-  ctx.font = `400 22px ${SANS}`;
-  ctx.fillStyle = COLORS.muted;
-  if(userVec){
-    hLine(ctx, lx, lx + 32, ly - 8, COLORS.accent, 4);
-    ctx.fillStyle = COLORS.muted;
-    ctx.fillText('나', lx + 44, ly);
-    lx += 44 + ctx.measureText('나').width + 32;
-  }
-  ctx.strokeStyle = COLORS.ink; ctx.lineWidth = 2; ctx.setLineDash([6, 5]);
-  ctx.beginPath(); ctx.moveTo(lx, ly - 8); ctx.lineTo(lx + 32, ly - 8); ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.fillStyle = COLORS.muted;
-  ctx.fillText(`${type.title} 기준`, lx + 44, ly);
-
-  // 추천 원두
-  const cx0 = bx + bs + 48, cw = R - cx0;
-  hLine(ctx, cx0, R, by, COLORS.ink, 2);
-  let y = by;
-  beans.forEach((b, i)=>{
-    const c = b.coffee;
-    y += 46;
-    ctx.font = `400 22px ${MONO}`;
-    ctx.fillStyle = COLORS.accent;
-    ctx.fillText(pad2(i+1), cx0, y);
-    if(b.match !== null){
-      ctx.fillStyle = COLORS.ink;
-      drawSpaced(ctx, `MATCH ${b.match}%`, R, y, 1, 'right');
-    }
-    y += 48;
-    ctx.font = `600 30px ${SANS}`;
+  // 키워드
+  y += 48;
+  ctx.font = `500 26px ${SANS}`;
+  const kws = type.keywords || [];
+  const sep = '   /   ';
+  const kwW = ctx.measureText(kws.join(sep)).width;
+  let kx = CX - kwW / 2;
+  ctx.textAlign = 'left';
+  kws.forEach((k, i)=>{
     ctx.fillStyle = COLORS.ink;
-    const nameLines = wrapLines(ctx, c.name_ko, cw, 2);
-    nameLines.forEach((ln, k) => ctx.fillText(ln, cx0, y + k * 42));
-    if(c.name_en){
-      y += (nameLines.length - 1) * 42 + 36;
-      ctx.font = `400 20px ${SANS}`;
-      ctx.fillStyle = COLORS.muted;
-      ctx.fillText(wrapLines(ctx, c.name_en, cw, 1)[0] || '', cx0, y);
-      y += 40;
-    } else {
-      y += (nameLines.length - 1) * 42 + 40;
+    ctx.fillText(k, kx, y);
+    kx += ctx.measureText(k).width;
+    if(i < kws.length - 1){
+      ctx.fillStyle = 'rgba(59,42,26,.42)';
+      ctx.fillText(sep, kx, y);
+      kx += ctx.measureText(sep).width;
     }
-    ctx.font = `400 22px ${SANS}`;
-    ctx.fillStyle = COLORS.muted;
-    const meta = [c.country_ko, c.process].filter(Boolean).join(' · ') + (c.decaf ? ' · 디카페인' : '');
-    ctx.fillText(wrapLines(ctx, meta, cw, 1)[0] || '', cx0, y);
-    y += 36;
-    ctx.fillStyle = COLORS.ink;
-    const noteLines = wrapLines(ctx, (c.cup_notes || []).join(' · '), cw, 2);
-    noteLines.forEach((ln, k) => ctx.fillText(ln, cx0, y + k * 34));
-    y += (noteLines.length - 1) * 34 + 32;
-    hLine(ctx, cx0, R, y, COLORS.line, 2);
   });
 
+  // 보물과 함께 발견한 원두
+  y += 58;
+  ctx.fillStyle = COLORS.ink;
+  ctx.font = `600 28px ${SANS}`;
+  const rt = '보물과 함께 발견한 원두';
+  ctx.fillText(rt, L, y);
+  hLine(ctx, L + ctx.measureText(rt).width + 20, R, y - 9, COLORS.ink, 2);
+
+  const bw = (R - L - 26) / 2, by = y + 30;
+  beans.forEach((b, i) => drawBeanCard(ctx, b, i, L + i * (bw + 26), by, bw));
+
   // 하단
-  hLine(ctx, L, R, 1236, COLORS.line, 2);
-  ctx.font = `400 22px ${MONO}`;
+  hLine(ctx, L, R, 1250, 'rgba(59,42,26,.3)', 2);
   ctx.fillStyle = COLORS.muted;
+  ctx.textAlign = 'left';
+  ctx.font = `400 22px ${MONO}`;
   const siteUrl = (window.location.host + window.location.pathname).replace(/index\.html$/, '').replace(/\/$/, '');
-  drawSpaced(ctx, siteUrl || 'COFFEE TI', L, 1290, 0.5);
-  drawSpaced(ctx, 'COFFEE TI', R, 1290, 2, 'right');
+  ctx.fillText(siteUrl || 'cdlake284.github.io/coffee-ti', L, 1292);
+  ctx.font = `400 22px ${CAPS}`;
+  drawSpaced(ctx, 'Coffee TI', R, 1292, 2, 'right');
 
   return new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
 }
