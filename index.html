@@ -12,28 +12,32 @@
 <meta property="og:image" content="https://cdlake284.github.io/coffee-ti/images/background/cover.png">
 <meta property="og:url" content="https://cdlake284.github.io/coffee-ti/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F6F5F1">
+<meta name="theme-color" content="#2E2318">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;500;600&family=IM+Fell+English&family=IM+Fell+English+SC&display=swap">
 <style>
   :root{
-    --page:#ECEAE3;
-    --bg:#F6F5F1;
-    --surface:#FFFFFF;
-    --surface-2:#E6E4DC;
-    --ink:#1C1C1A;
-    --ink-2:#4A4943;
-    --muted:#6B6A64;
-    --muted-2:#77756D;
-    --line:#DAD8D0;
-    --line-soft:#EEECE6;
-    --line-btn:#C9C7BE;
-    --accent:#2F5D46;
-    --sans:'IBM Plex Sans KR', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-    --mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    /* 양피지 · 잉크 · 봉랍 팔레트 */
+    --page:#2E2318;          /* 양피지 뒤의 책상 (PC에서만 보임) */
+    --bg:#E9D9B4;            /* 양피지 */
+    --surface:rgba(255,248,230,.38); /* 양피지 위에 얹는 밝은 면 */
+    --surface-2:#DCC7A0;
+    --ink:#3B2A1A;           /* 세피아 잉크 */
+    --ink-2:#5A4430;
+    --muted:#6B5238;
+    --muted-2:#7A6246;
+    --line:rgba(59,42,26,.28);
+    --line-soft:rgba(59,42,26,.12);
+    --line-btn:rgba(59,42,26,.42);
+    --accent:#8E2F22;        /* 봉랍 적갈색 */
+    --sans:'Hahmlet', 'Apple SD Gothic Neo', 'Malgun Gothic', serif;
+    --mono:'IM Fell English', 'Hahmlet', serif;
+    --caps:'IM Fell English SC', 'IM Fell English', 'Hahmlet', serif;
     --ease:cubic-bezier(.2,.7,.2,1);
+    /* 코드로 만든 양피지 결 (이음새 없이 반복) */
+    --paper:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='1200'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='3' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .37 0 0 0 0 .16 0 0 0 .7 -.22'/%3E%3C/filter%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.005 .06' numOctaves='2' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .34 0 0 0 0 .15 0 0 0 .25 -.05'/%3E%3C/filter%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .23 0 0 0 0 .1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
   }
   *{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; }
@@ -55,7 +59,12 @@
     width:100%;
     max-width:480px;
     min-height:100vh;
-    background:var(--bg);
+    background-color:var(--bg);
+    background-image:var(--paper);
+    background-size:480px 1200px;
+    background-position:center top;
+    /* 그을린 가장자리 */
+    box-shadow:inset 0 0 64px rgba(120,78,34,.5), inset 0 0 12px rgba(90,58,24,.55);
     padding:28px 24px 32px;
     display:flex;
     flex-direction:column;
@@ -68,13 +77,14 @@
 
   .topbar{
     display:flex; justify-content:space-between; align-items:center;
-    padding-bottom:16px;
+    padding-bottom:14px;
     border-bottom:1px solid var(--ink);
+    box-shadow:0 3px 0 -2px var(--line-btn); /* 두 줄 괘선 */
   }
-  .logo{ font-family:var(--mono); font-size:13px; font-weight:500; letter-spacing:.12em; }
-  .topbar-meta{ font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.08em; }
-  .kicker{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--accent); }
-  .section-label{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--muted); }
+  .logo{ font-family:var(--caps); font-size:17px; letter-spacing:.08em; }
+  .topbar-meta{ font-family:var(--caps); font-size:13px; color:var(--muted); letter-spacing:.06em; }
+  .kicker{ font-family:var(--caps); font-size:14px; letter-spacing:.06em; color:var(--accent); }
+  .section-label{ font-family:var(--caps); font-size:14px; letter-spacing:.06em; color:var(--muted); }
 
   .btn-primary{
     height:56px; width:100%;
@@ -83,9 +93,10 @@
     font-size:15px; font-weight:500;
     display:flex; align-items:center; justify-content:center; gap:8px;
     cursor:pointer;
+    box-shadow:inset 0 0 0 1px rgba(233,217,180,.18), inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(233,217,180,.28);
     transition:background .2s ease, transform .1s ease, opacity .2s ease;
   }
-  .btn-primary:hover{ background:#000; }
+  .btn-primary:hover{ background:#24190F; }
   .btn-primary:active{ transform:scale(.99); }
   .btn-primary:disabled{ opacity:.5; cursor:default; }
   .btn-arrow{ width:20px; height:20px; transition:transform .2s var(--ease); }
@@ -105,7 +116,7 @@
   .start-intro{ margin-top:56px; display:flex; flex-direction:column; gap:20px; }
   .start-title{
     font-size:clamp(28px, 8.4vw, 34px);
-    line-height:1.34;
+    line-height:1.4;
     font-weight:300;
     letter-spacing:-.03em;
   }
@@ -117,14 +128,16 @@
   }
   .stat{ padding:16px 0; display:flex; flex-direction:column; gap:4px; }
   .stat + .stat{ border-left:1px solid var(--line); padding-left:16px; }
-  .stat b{ font-family:var(--mono); font-size:20px; font-weight:400; }
-  .stat span{ font-size:11px; color:var(--muted); }
+  .stat b{ font-family:var(--mono); font-size:26px; font-weight:400; line-height:1.1; }
+  .stat span{ font-size:12px; color:var(--muted); }
   .cover{
     flex:1;
     min-height:200px;
     margin-top:24px;
     background:var(--surface-2);
-    border:1px solid var(--line);
+    border:1px solid var(--line-btn);
+    outline:1px solid var(--line);
+    outline-offset:3px;
     position:relative;
     overflow:hidden;
   }
@@ -133,7 +146,8 @@
     width:100%; height:100%;
     object-fit:cover;
     display:block;
-    filter:saturate(.55) contrast(.96) brightness(1.02);
+    filter:sepia(.45) saturate(.6) contrast(.95);
+    mix-blend-mode:multiply;
   }
   .btn-start{ margin-top:24px; justify-content:space-between; padding:0 22px; }
 
@@ -141,7 +155,7 @@
   .survey-top{ display:flex; align-items:center; gap:16px; }
   .icon-btn{
     width:44px; height:44px; flex-shrink:0;
-    border:1px solid var(--line); border-radius:0;
+    border:1px solid var(--line-btn); border-radius:0;
     background:transparent; color:var(--ink);
     display:flex; align-items:center; justify-content:center;
     cursor:pointer;
@@ -151,21 +165,21 @@
   .icon-btn:disabled{ opacity:.3; cursor:default; }
   .progress{ flex:1; height:2px; background:var(--line); position:relative; overflow:hidden; }
   .progress-fill{ position:absolute; left:0; top:0; bottom:0; width:0; background:var(--accent); transition:width .45s var(--ease); }
-  .q-count{ font-family:var(--mono); font-size:12px; white-space:nowrap; }
+  .q-count{ font-family:var(--mono); font-size:16px; white-space:nowrap; }
   .q-count span{ color:var(--muted-2); }
 
   .q-body{ flex:1; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:40px 0; }
-  .q-label{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--accent); }
+  .q-label{ font-family:var(--caps); font-size:15px; letter-spacing:.04em; color:var(--accent); }
   .q-text{
-    font-size:clamp(21px, 6.4vw, 25px);
-    line-height:1.5;
-    font-weight:400;
+    font-size:clamp(20px, 6vw, 24px);
+    line-height:1.6;
+    font-weight:500;
     letter-spacing:-.02em;
   }
   .options{ display:flex; flex-direction:column; gap:8px; }
   .option{
     height:52px;
-    border:1px solid var(--line); border-radius:0;
+    border:1px solid var(--line-btn); border-radius:0;
     background:var(--surface); color:var(--ink);
     padding:0 18px;
     font-size:14px; text-align:left;
@@ -182,74 +196,132 @@
   .q-anim{ animation:q-in .38s var(--ease) both; }
   .options.q-anim{ animation-delay:.06s; }
 
-  /* ---------- 로딩 ---------- */
-  #screen-loading{ align-items:center; justify-content:center; gap:28px; text-align:center; }
-  .loading-radar{ width:180px; height:180px; }
-  .loading-radar .draw{ stroke-dasharray:900; animation:draw 1.6s ease-out infinite; }
-  @keyframes draw{ from{ stroke-dashoffset:900; } to{ stroke-dashoffset:0; } }
+  /* ---------- 로딩: 보물 상자 ---------- */
+  #screen-loading{ align-items:center; justify-content:center; gap:24px; text-align:center; }
+  .chest{ width:128px; height:128px; image-rendering:pixelated; display:block; }
+  .chest.shake{ animation:chest-shake .5s infinite; }
+  .chest.shake-fast{ animation:chest-shake-fast .22s infinite; }
+  @keyframes chest-shake{
+    0%,60%,100%{ transform:none; }
+    70%{ transform:translateX(-3px) rotate(-3deg); }
+    80%{ transform:translate(3px,-2px) rotate(3deg); }
+    90%{ transform:translateX(-2px) rotate(-2deg); }
+  }
+  @keyframes chest-shake-fast{
+    0%,100%{ transform:none; }
+    25%{ transform:translate(-4px,-2px) rotate(-4deg); }
+    75%{ transform:translate(4px,-2px) rotate(4deg); }
+  }
   .loading-text{ display:flex; flex-direction:column; gap:6px; align-items:center; }
   .loading-text p{ font-size:14px; color:var(--muted); }
+  .dots::after{ content:''; animation:dots 1.2s steps(4) infinite; }
+  @keyframes dots{ 0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';} }
 
-  /* ---------- 결과 ---------- */
-  #result-view{ display:flex; flex-direction:column; gap:28px; }
-  .type-block{ display:flex; flex-direction:column; gap:16px; }
-  .type-row{ display:flex; gap:20px; align-items:flex-end; }
-  .type-head{ flex:1; min-width:0; display:flex; flex-direction:column; gap:10px; }
-  #type-title{ font-size:clamp(28px, 8.6vw, 34px); font-weight:600; letter-spacing:-.03em; line-height:1.2; }
-  .char-frame{
-    width:96px; height:96px; flex-shrink:0;
+  /* ---------- 보물 등장 ---------- */
+  #screen-reveal{ position:relative; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; -webkit-tap-highlight-color:transparent; }
+  .reveal-stage{ position:relative; display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; padding-bottom:40px; }
+  .rays{
+    position:absolute; left:50%; top:88px; width:440px; height:440px; margin:-220px 0 0 -220px;
+    opacity:0; transform:scale(.3); pointer-events:none;
+    transition:opacity .5s ease, transform 1.2s var(--ease);
+  }
+  .rays.on{ opacity:1; transform:scale(1); }
+  .rays svg{ width:100%; height:100%; display:block; animation:rays-spin 24s linear infinite; }
+  @keyframes rays-spin{ to{ transform:rotate(360deg); } }
+  .reveal-treasure{
+    position:relative; width:176px; height:176px; image-rendering:pixelated; display:block;
+    opacity:0; transform:translateY(96px) scale(.3);
+  }
+  .reveal-treasure.rise{ opacity:1; transform:none; transition:transform 1s cubic-bezier(.2,1.3,.4,1), opacity .4s ease; }
+  .reveal-chest{
+    position:absolute; left:50%; top:150px; width:112px; height:112px; margin-left:-56px;
+    image-rendering:pixelated; transition:opacity .8s ease .6s, transform .8s ease .6s;
+  }
+  .reveal-chest.out{ opacity:0; transform:translateY(30px); }
+  .orn{ display:flex; align-items:center; justify-content:center; gap:10px; color:var(--accent); font-size:13px; }
+  .orn i{ display:block; width:26px; height:1px; background:currentColor; opacity:.6; }
+  .reveal-place{ opacity:0; transform:translateY(8px); transition:opacity .6s ease, transform .6s ease; margin-top:8px; }
+  .reveal-place.on{ opacity:1; transform:none; }
+  .reveal-name{ font-size:clamp(26px, 8vw, 30px); font-weight:600; letter-spacing:-.03em; line-height:1.3; min-height:40px; }
+  .reveal-name .ch{ display:inline-block; opacity:0; transform:translateY(6px); transition:opacity .25s ease, transform .25s ease; }
+  .reveal-name .ch.on{ opacity:1; transform:none; }
+  .reveal-tap{ position:absolute; left:0; right:0; bottom:0; text-align:center; font-size:11px; color:var(--muted-2); opacity:0; transition:opacity .6s ease; }
+  .reveal-tap.on{ opacity:1; }
+  .fly-treasure{
+    position:fixed; z-index:50; margin:0; image-rendering:pixelated; pointer-events:none;
+    transition:left .9s cubic-bezier(.6,0,.2,1), top .9s cubic-bezier(.6,0,.2,1), width .9s cubic-bezier(.6,0,.2,1), height .9s cubic-bezier(.6,0,.2,1);
+  }
+
+  /* ---------- 결과: 발견 기록 ---------- */
+  #screen-result.no-fade{ animation:none; }
+  #result-view{ display:flex; flex-direction:column; }
+  .found{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; padding-top:26px; }
+  .treasure-frame{
+    width:150px; height:150px; margin:6px 0 8px;
     border:1px solid var(--ink);
+    outline:1px solid var(--line-btn);
+    outline-offset:4px;
     background-color:var(--surface);
     background-image:
       linear-gradient(var(--line-soft) 1px, transparent 1px),
       linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-    background-size:11px 11px;
+    background-size:15px 15px;
     display:flex; align-items:center; justify-content:center;
   }
-  .sprite{ width:76px; height:76px; object-fit:contain; image-rendering:pixelated; display:block; }
-  .type-desc{ font-size:14px; line-height:1.75; color:var(--ink-2); }
-  .keywords{ display:flex; flex-wrap:wrap; gap:6px 12px; font-size:12.5px; }
-  .keywords .sep{ color:var(--line-btn); }
+  .sprite{ width:128px; height:128px; object-fit:contain; image-rendering:pixelated; display:block; }
+  .sprite.waiting{ visibility:hidden; }
+  #type-title{ font-size:clamp(26px, 8vw, 30px); font-weight:600; letter-spacing:-.03em; line-height:1.25; }
+  .type-legend{ font-size:13px; line-height:1.7; color:var(--muted); max-width:300px; }
+  .type-desc{ font-size:14px; line-height:1.8; color:var(--ink-2); text-align:center; margin-top:18px; }
+  .keywords{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px 10px; font-size:13px; font-weight:500; margin-top:10px; }
+  .keywords .sep{ color:var(--line-btn); font-weight:400; }
 
-  .map-block{ padding-top:20px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:14px; }
-  .section-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
-  .legend{ display:flex; gap:14px; font-size:11px; color:var(--muted); }
-  .legend > span{ display:flex; align-items:center; gap:6px; white-space:nowrap; }
-  .lg-me{ display:inline-block; width:16px; height:2px; background:var(--accent); }
-  .lg-type{ display:inline-block; width:16px; height:0; border-top:1px dashed var(--ink); }
-  .map-box{ background:var(--surface); border:1px solid var(--line); display:flex; justify-content:center; padding:12px 8px; }
-  .map-box svg{ width:100%; max-width:320px; height:auto; display:block; }
+  .section-rule{ display:flex; align-items:center; gap:10px; margin:32px 0 14px; }
+  .section-rule span{ font-size:15px; font-weight:600; white-space:nowrap; }
+  .section-rule i{ flex:1; height:1px; background:var(--ink); }
 
-  .beans-block{ display:flex; flex-direction:column; }
-  .beans-block .section-label{ padding-bottom:12px; }
-  .bean-list{ border-top:1px solid var(--ink); }
-  .bean{ padding:18px 0; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:12px; }
-  .bean-top{ display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:12px; }
-  .bean-rank{ color:var(--accent); }
-  .bean-match b{ font-weight:500; }
-  .bean-body{ display:flex; gap:12px; align-items:center; }
-  .bean-info{ flex:1; min-width:0; display:flex; flex-direction:column; gap:6px; }
-  .bean-name{ font-size:16px; font-weight:600; line-height:1.4; }
-  .bean-en{ font-size:11px; color:var(--muted-2); line-height:1.4; overflow-wrap:anywhere; }
-  .bean-meta{ font-size:12px; color:var(--ink-2); line-height:1.6; margin-top:4px; }
-  .bean-variety{ color:var(--muted); }
-  .bean-notes{ font-size:12px; line-height:1.6; }
-  .bean-chart{ flex-shrink:0; width:110px; }
-  .bean-chart svg{ display:block; width:110px; height:auto; }
+  .bean-list{ display:flex; flex-direction:column; gap:16px; }
+  .bean-card{
+    border:1px solid var(--ink);
+    outline:1px solid rgba(59,42,26,.3);
+    outline-offset:3px;
+    background:var(--surface);
+    padding:16px 16px 14px;
+  }
+  .bean-card.sub{ border-color:var(--line-btn); outline:none; background:rgba(255,248,230,.22); }
+  .bean-head{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding-bottom:12px; margin-bottom:12px;
+    border-bottom:1px dashed rgba(59,42,26,.35);
+  }
+  .bean-rank{ display:flex; flex-direction:column; gap:2px; font-size:12px; color:var(--muted); }
+  .bean-rank .num{ font-family:var(--mono); font-size:22px; line-height:1; color:var(--accent); }
+  .bean-match{ text-align:right; line-height:1; }
+  .bean-match .lbl{ display:block; font-family:var(--caps); font-size:12px; color:var(--muted); margin-bottom:4px; }
+  .bean-match .pct{ font-family:var(--mono); font-size:34px; color:var(--accent); }
+  .bean-card.sub .bean-match .pct{ font-size:26px; }
+  .bean-body{ display:flex; gap:10px; align-items:center; }
+  .bean-info{ flex:1; min-width:0; display:flex; flex-direction:column; gap:5px; }
+  .bean-name{ font-size:17px; font-weight:600; line-height:1.4; }
+  .bean-card.sub .bean-name{ font-size:15px; }
+  .bean-en{ font-family:var(--mono); font-size:13px; color:var(--muted-2); line-height:1.4; overflow-wrap:anywhere; }
+  .bean-meta{ font-size:12px; color:var(--ink-2); line-height:1.6; }
+  .bean-tags{ display:flex; flex-wrap:wrap; gap:5px; margin-top:4px; }
+  .bean-tags span{ font-size:11px; padding:3px 7px; border:1px solid rgba(59,42,26,.35); background:rgba(255,248,230,.4); }
+  .bean-chart{ flex-shrink:0; width:92px; }
+  .bean-card.sub .bean-chart{ width:80px; }
+  .bean-chart svg{ display:block; width:100%; height:auto; }
 
   .result-actions{ margin-top:auto; padding-top:32px; display:flex; flex-direction:column; gap:8px; }
   .btn-row{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; }
 
   /* 결과 섹션 순차 등장 */
-  @keyframes rise{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:none;} }
-  #screen-result.active #result-view > *{ animation:rise .5s var(--ease) both; }
-  #screen-result.active #result-view > *:nth-child(2){ animation-delay:.08s; }
-  #screen-result.active #result-view > *:nth-child(3){ animation-delay:.16s; }
-  #screen-result.active #result-view > *:nth-child(4){ animation-delay:.24s; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(12px);} to{ opacity:1; transform:none;} }
+  #screen-result.active .seq{ animation:rise .5s var(--ease) both; animation-delay:var(--d, 0s); }
 
   @media (prefers-reduced-motion: reduce){
-    .screen, .q-anim, #screen-result.active #result-view > *{ animation:none !important; }
-    .loading-radar .draw{ animation:none; stroke-dashoffset:0; }
+    .screen, .q-anim, #screen-result.active .seq{ animation:none !important; }
+    .chest.shake, .chest.shake-fast, .rays svg{ animation:none; }
     .progress-fill{ transition:none; }
   }
 </style>
@@ -304,60 +376,52 @@
 
   <!-- ================= LOADING ================= -->
   <section class="screen" id="screen-loading">
-    <svg class="loading-radar" viewBox="0 0 300 300" fill="none" aria-hidden="true">
-      <polygon points="150,40 220.7,65.7 258.3,130.9 245.3,205 187.6,253.4 112.4,253.4 54.7,205 41.7,130.9 79.3,65.7" stroke="#DAD8D0" stroke-width="1"/>
-      <polygon points="150,95 185.4,107.9 204.2,140.5 197.6,177.5 168.8,201.7 131.2,201.7 102.4,177.5 95.8,140.5 114.6,107.9" stroke="#EEECE6" stroke-width="1"/>
-      <polygon class="draw" points="150,40 178.3,116.3 171.7,146.2 159.5,155.5 180.1,232.7 135,191.3 121.4,166.5 139.2,148.1 142.9,141.6" stroke="#2F5D46" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
+    <img class="chest" id="loading-chest" src="images/chest/chest_closed.png" alt="">
     <div class="loading-text">
-      <div class="kicker">ANALYZING</div>
-      <p>취향을 분석하는 중</p>
+      <div class="kicker">Opening the Chest</div>
+      <p><span>보물 상자를 여는 중</span><span class="dots" aria-hidden="true"></span></p>
     </div>
+  </section>
+
+  <!-- ================= REVEAL ================= -->
+  <section class="screen" id="screen-reveal" aria-live="polite">
+    <div class="reveal-stage">
+      <div class="rays" id="reveal-rays" aria-hidden="true"><svg viewBox="-220 -220 440 440" id="rays-svg"></svg></div>
+      <img class="reveal-chest" id="reveal-chest" src="images/chest/chest_open.png" alt="">
+      <img class="reveal-treasure" id="reveal-img" src="" alt="">
+      <div class="orn reveal-place" id="reveal-place"><i></i><span id="reveal-place-text"></span><i></i></div>
+      <div class="reveal-name" id="reveal-name"></div>
+    </div>
+    <div class="reveal-tap" id="reveal-tap">화면을 누르면 바로 넘어가요</div>
   </section>
 
   <!-- ================= RESULT ================= -->
   <section class="screen" id="screen-result">
     <div id="result-view">
-      <header class="topbar">
+      <header class="topbar seq">
         <span class="logo">COFFEE TI</span>
-        <span class="topbar-meta">RESULT</span>
+        <span class="topbar-meta">Expedition Log</span>
       </header>
 
-      <div class="type-block">
-        <div class="type-row">
-          <div class="type-head">
-            <div class="kicker">YOUR TASTE TYPE</div>
-            <h2 id="type-title">-</h2>
-          </div>
-          <div class="char-frame">
-            <img id="sprite-img" class="sprite" src="" alt="취향 타입 캐릭터">
-          </div>
+      <div class="found">
+        <div class="orn seq" style="--d:.05s"><i></i><span id="type-place">발견한 보물</span><i></i></div>
+        <div class="treasure-frame">
+          <img id="sprite-img" class="sprite" src="" alt="발견한 보물">
         </div>
-        <p class="type-desc" id="type-desc">-</p>
-        <div class="keywords" id="type-keywords"></div>
+        <h2 id="type-title" class="seq" style="--d:.1s">-</h2>
+        <p class="type-legend seq" id="type-legend" style="--d:.18s"></p>
       </div>
+      <p class="type-desc seq" id="type-desc" style="--d:.26s">-</p>
+      <div class="keywords seq" id="type-keywords" style="--d:.32s"></div>
 
-      <div class="map-block">
-        <div class="section-head">
-          <div class="section-label">TASTE MAP</div>
-          <div class="legend">
-            <span id="legend-me"><i class="lg-me"></i>나</span>
-            <span><i class="lg-type"></i><span id="legend-type">타입 기준</span></span>
-          </div>
-        </div>
-        <div class="map-box" id="taste-map"></div>
-      </div>
-
-      <div class="beans-block">
-        <div class="section-label">RECOMMENDED BEANS</div>
-        <div class="bean-list" id="coffee-list"></div>
-      </div>
+      <div class="section-rule seq" style="--d:.42s"><span>보물과 함께 발견한 원두</span><i></i></div>
+      <div class="bean-list" id="coffee-list"></div>
     </div>
 
-    <div class="result-actions">
+    <div class="result-actions seq" style="--d:.7s">
       <button class="btn-primary" id="btn-save">결과 저장</button>
       <div class="btn-row">
-        <button class="btn-secondary" id="btn-restart">다시 하기</button>
+        <button class="btn-secondary" id="btn-restart">다시 원정 떠나기</button>
         <button class="btn-secondary" id="btn-share">공유하기</button>
       </div>
     </div>
@@ -447,9 +511,10 @@ const pad2 = n => String(n).padStart(2, '0');
 function esc(s){
   return String(s ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 }
+// 캔버스·SVG용 단색 팔레트 (CSS 변수와 같은 톤)
 const COLORS = {
-  bg:'#F6F5F1', surface:'#FFFFFF', ink:'#1C1C1A', ink2:'#4A4943', muted:'#6B6A64',
-  line:'#DAD8D0', soft:'#EEECE6', accent:'#2F5D46'
+  bg:'#E9D9B4', surface:'#F1E5C8', ink:'#3B2A1A', ink2:'#5A4430', muted:'#6B5238',
+  line:'#B59C72', soft:'#CDB68C', accent:'#8E2F22'
 };
 
 /* =========================================================
@@ -466,8 +531,10 @@ const screens = {
   start: document.getElementById('screen-start'),
   survey: document.getElementById('screen-survey'),
   loading: document.getElementById('screen-loading'),
+  reveal: document.getElementById('screen-reveal'),
   result: document.getElementById('screen-result')
 };
+const prefersReducedMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 function showScreen(name){
   Object.values(screens).forEach(s=>s.classList.remove('active'));
   screens[name].classList.add('active');
@@ -601,6 +668,7 @@ btnBack.addEventListener('click', ()=>{
 
 document.getElementById('btn-restart').addEventListener('click', ()=>{
   if(spriteTimer) clearInterval(spriteTimer);
+  clearRevealTimers();
   answers.fill(null);
   current = 0;
   isSharedView = false;
@@ -775,7 +843,7 @@ function radarSVG(axes, series, opts={}){
   const lr = opts.labelRatio || 1.2;
   axes.forEach((ax,i)=>{
     const [x,y] = radarPoint(i, n, lr, cx, cy, r);
-    out += `<text x="${f(x)}" y="${f(y)}" fill="${COLORS.muted}" font-size="${opts.labelSize || 11}" font-family="IBM Plex Sans KR, sans-serif" text-anchor="middle" dominant-baseline="middle">${ax.label}</text>`;
+    out += `<text x="${f(x)}" y="${f(y)}" fill="${COLORS.muted}" font-size="${opts.labelSize || 11}" font-family="Hahmlet, serif" text-anchor="middle" dominant-baseline="middle">${ax.label}</text>`;
   });
   return `<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="${esc(opts.ariaLabel || '맛 레이더 차트')}">${out}</svg>`;
 }
@@ -799,33 +867,147 @@ function spriteFrames(typeId){
     `images/characters/${typeId}_pose2.png`
   ];
 }
+// 결과 화면·보물 등장 화면·날아가는 보물이 같은 프레임으로 함께 움직인다
+const SPRITE_TARGETS = ['sprite-img', 'reveal-img'];
+let spriteFrameSrc = '';
 function renderSprite(typeId){
   const frames = spriteFrames(typeId);
-  const img = document.getElementById('sprite-img');
-  if(!img) return;
+  frames.forEach(src => { const im = new Image(); im.src = src; }); // 프레임 미리 불러오기
   let idx = 0;
-  img.src = frames[idx];
+  const apply = () => {
+    spriteFrameSrc = frames[idx];
+    SPRITE_TARGETS.forEach(id => { const el = document.getElementById(id); if(el) el.src = spriteFrameSrc; });
+    const fly = document.querySelector('.fly-treasure');
+    if(fly) fly.src = spriteFrameSrc;
+  };
+  apply();
   if(spriteTimer) clearInterval(spriteTimer);
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(prefersReducedMotion()) return;
   spriteTimer = setInterval(()=>{
     idx = (idx + 1) % frames.length;
-    img.src = frames[idx];
+    apply();
   }, 450);
 }
+
+/* =========================================================
+   LOADING (보물 상자) → REVEAL (보물 등장) → RESULT
+========================================================= */
+const LOADING_MS = 3000;       // 보물 상자가 흔들리는 시간
+const REVEAL_HOLD_MS = 3000;   // 이름이 다 적힌 뒤 결과로 넘어가기까지
+let revealTimers = [];
+let revealPhase = null;        // 'reveal' 일 때만 화면 탭으로 넘어갈 수 있음
+function later(ms, fn){ revealTimers.push(setTimeout(fn, ms)); }
+function clearRevealTimers(){
+  revealTimers.forEach(clearTimeout);
+  revealTimers = [];
+  revealPhase = null;
+  document.querySelectorAll('.fly-treasure').forEach(el => el.remove());
+}
+
+(function buildRays(){
+  let out = '';
+  for(let i = 0; i < 24; i++){
+    const a = i * Math.PI / 12, odd = i % 2 === 1;
+    const s = odd ? 58 : 52, l = odd ? 160 : 210;
+    out += `<line x1="${(Math.cos(a)*s).toFixed(1)}" y1="${(Math.sin(a)*s).toFixed(1)}" x2="${(Math.cos(a)*l).toFixed(1)}" y2="${(Math.sin(a)*l).toFixed(1)}" stroke="${odd ? COLORS.accent : COLORS.ink}" stroke-opacity="${odd ? .35 : .28}" stroke-width="${odd ? 1 : 1.4}"${odd ? ' stroke-dasharray="2 4"' : ''}/>`;
+  }
+  out += '<circle r="96" fill="#FFF6DC" fill-opacity=".45"/><circle r="60" fill="#FFF6DC" fill-opacity=".5"/>';
+  document.getElementById('rays-svg').innerHTML = out;
+})();
+
+function placeLabel(type){
+  if(isSharedView) return '친구가 발견한 보물';
+  return type.place ? `${type.place}에서 발견한 보물` : '발견한 보물';
+}
+
+function startLoading(){
+  const chest = document.getElementById('loading-chest');
+  chest.className = 'chest';
+  showScreen('loading');
+  if(prefersReducedMotion()) return;
+  later(300, ()=> chest.classList.add('shake'));
+  later(LOADING_MS - 800, ()=>{ chest.classList.remove('shake'); chest.classList.add('shake-fast'); });
+}
+
+function playReveal(type){
+  const rays = document.getElementById('reveal-rays');
+  const chest = document.getElementById('reveal-chest');
+  const img = document.getElementById('reveal-img');
+  const place = document.getElementById('reveal-place');
+  const nameEl = document.getElementById('reveal-name');
+  const tap = document.getElementById('reveal-tap');
+
+  [rays, place, tap].forEach(el => el.classList.remove('on'));
+  chest.classList.remove('out');
+  img.classList.remove('rise');
+  document.getElementById('reveal-place-text').textContent = placeLabel(type);
+  nameEl.setAttribute('aria-label', type.title);
+  nameEl.innerHTML = [...type.title].map(ch => `<span class="ch" aria-hidden="true">${ch === ' ' ? '&nbsp;' : esc(ch)}</span>`).join('');
+
+  showScreen('reveal');
+  revealPhase = 'reveal';
+  requestAnimationFrame(()=> requestAnimationFrame(()=>{
+    rays.classList.add('on');
+    img.classList.add('rise');
+  }));
+  later(250, ()=> chest.classList.add('out'));
+  later(1100, ()=> place.classList.add('on'));
+  const chars = nameEl.querySelectorAll('.ch');
+  chars.forEach((c, i) => later(1500 + i * 90, ()=> c.classList.add('on')));
+  const typed = 1500 + chars.length * 90;
+  later(typed + 600, ()=> tap.classList.add('on'));
+  later(typed + REVEAL_HOLD_MS, revealToResult);
+}
+
+// 보물이 결과 화면의 액자 자리로 날아가 앉는다
+function revealToResult(){
+  if(revealPhase !== 'reveal') return;
+  revealPhase = 'done';
+  revealTimers.forEach(clearTimeout);
+  revealTimers = [];
+
+  const from = document.getElementById('reveal-img').getBoundingClientRect();
+  const sprite = document.getElementById('sprite-img');
+  sprite.classList.add('waiting');
+  screens.result.classList.add('no-fade');
+  showScreen('result');
+  const to = sprite.getBoundingClientRect();
+
+  const fly = document.createElement('img');
+  fly.className = 'fly-treasure';
+  fly.alt = '';
+  fly.src = spriteFrameSrc;
+  Object.assign(fly.style, { left: from.left+'px', top: from.top+'px', width: from.width+'px', height: from.height+'px' });
+  document.body.appendChild(fly);
+  void fly.offsetWidth;
+  Object.assign(fly.style, { left: to.left+'px', top: to.top+'px', width: to.width+'px', height: to.height+'px' });
+
+  const land = ()=>{
+    sprite.classList.remove('waiting');
+    fly.remove();
+    screens.result.classList.remove('no-fade');
+  };
+  fly.addEventListener('transitionend', e => { if(e.propertyName === 'left') land(); }, { once:false });
+  later(1200, ()=>{ if(fly.isConnected) land(); }); // transitionend 누락 대비
+}
+
+screens.reveal.addEventListener('click', revealToResult);
 
 /* =========================================================
    RESULT RENDER
 ========================================================= */
 function goCalculate(){
-  showScreen('loading');
-  setTimeout(()=>{
+  clearRevealTimers();
+  startLoading();
+  const reduced = prefersReducedMotion();
+  later(reduced ? 600 : LOADING_MS, ()=>{
     let userVec = computeUserVector();
     const decafPref = computeDecafPreference();
 
     let matchedType;
     if (isZeroVector(userVec)) {
       matchedType = types.find(t => t.id === "I");
-      // 여행자 타입의 기준점으로 userVec을 변경
+      // 균형의 나침반 타입의 기준점으로 userVec을 변경
       userVec = { ...matchedType.center_score };
     } else {
       matchedType = matchType(userVec);
@@ -833,28 +1015,30 @@ function goCalculate(){
 
     const [c1, c2] = recommendCoffees(userVec, decafPref);
     renderResult(matchedType, c1, c2, userVec);
-    showScreen('result');
-  }, 1100);
+    if(reduced) showScreen('result');
+    else playReveal(matchedType);
+  });
 }
 
+const BEAN_ROLE = ['가장 잘 맞는 원두', '함께 마셔볼 원두'];
 function beanHTML(c, idx, match){
-  const variety = Array.isArray(c.variety) ? c.variety.join(', ') : (c.variety || '');
   const meta = [c.country_ko, c.process].filter(Boolean).map(esc).join(' · ') + (c.decaf ? ' · 디카페인' : '');
+  const main = idx === 0;
   return `
-    <article class="bean">
-      <div class="bean-top">
-        <span class="bean-rank">${pad2(idx+1)}</span>
-        ${match !== null ? `<span class="bean-match">MATCH <b>${match}%</b></span>` : ''}
+    <article class="bean-card${main ? '' : ' sub'} seq" style="--d:${(0.5 + idx * 0.1).toFixed(2)}s">
+      <div class="bean-head">
+        <div class="bean-rank"><span class="num">${pad2(idx+1)}</span><span>${BEAN_ROLE[idx] || ''}</span></div>
+        ${match !== null ? `<div class="bean-match"><span class="lbl">Match</span><span class="pct">${match}%</span></div>` : ''}
       </div>
       <div class="bean-body">
         <div class="bean-info">
           <h3 class="bean-name">${esc(c.name_ko)}</h3>
-          ${c.name_en ? `<div class="bean-en">${esc(c.name_en)}</div>` : ''}
-          <div class="bean-meta">${meta}${variety ? `<br><span class="bean-variety">품종 ${esc(variety)}</span>` : ''}</div>
-          <div class="bean-notes">${(c.cup_notes||[]).map(esc).join(' · ')}</div>
+          ${main && c.name_en ? `<div class="bean-en">${esc(c.name_en)}</div>` : ''}
+          <div class="bean-meta">${meta}</div>
+          <div class="bean-tags">${(c.cup_notes||[]).map(n => `<span>${esc(n)}</span>`).join('')}</div>
         </div>
         <div class="bean-chart">
-          ${radarSVG(MINI_AXES, [{ values: c.taste_score, stroke: COLORS.accent, width: 1.3, fill: COLORS.accent, fillOpacity: 0.1 }],
+          ${radarSVG(MINI_AXES, [{ values: c.taste_score, stroke: COLORS.accent, width: 1.3, fill: COLORS.accent, fillOpacity: 0.12 }],
             { size: 110, pad: 26, labelRatio: 1.45, labelSize: 9, ariaLabel: '산미·단맛·쓴맛·바디 차트' })}
         </div>
       </div>
@@ -866,22 +1050,24 @@ function renderResult(type, c1, c2, userVec){
   currentResult = { typeId: type.id, c1Id: c1 ? c1.id : null, c2Id: c2 ? c2.id : null, vec: userVec };
   lastRender = { type, beans, userVec };
 
+  document.getElementById('type-place').textContent = placeLabel(type);
   document.getElementById('type-title').textContent = type.title;
+  const legend = document.getElementById('type-legend');
+  legend.textContent = type.legend ? `“${type.legend}”` : '';
+  legend.hidden = !type.legend;
   document.getElementById('type-desc').textContent = type.description;
 
   const kw = document.getElementById('type-keywords');
   kw.innerHTML = (type.keywords || []).map(esc).map(k => `<span>${k}</span>`).join('<span class="sep" aria-hidden="true">/</span>');
 
+  const sprite = document.getElementById('sprite-img');
+  sprite.classList.remove('waiting');
+  sprite.alt = type.title;
   renderSprite(type.id);
-
-  document.getElementById('legend-me').style.display = userVec ? '' : 'none';
-  document.getElementById('legend-type').textContent = `${type.title} 기준`;
-  document.getElementById('taste-map').innerHTML =
-    radarSVG(MAIN_AXES, tasteMapSeries(type, userVec), { size: 300, pad: 50, labelRatio: 1.2, labelSize: 11, ariaLabel: '나의 취향 지도' });
 
   document.getElementById('coffee-list').innerHTML = beans.map((b, i) => beanHTML(b.coffee, i, b.match)).join('');
 
-  document.getElementById('btn-restart').textContent = isSharedView ? '나도 취향 찾아보기' : '다시 하기';
+  document.getElementById('btn-restart').textContent = isSharedView ? '나도 원정 떠나기' : '다시 원정 떠나기';
 
   // 저장 버튼을 눌렀을 때 바로 공유 시트를 띄울 수 있도록 카드 이미지를 미리 만들어 둔다
   cardPromise = buildShareCardBlob().catch(err => { console.error('결과 카드 생성 실패', err); return null; });
@@ -889,10 +1075,11 @@ function renderResult(type, c1, c2, userVec){
 
 /* =========================================================
    SHARE CARD (1080 x 1350, Canvas로 직접 그림)
+   ※ 새 톤에 맞춘 카드 디자인은 5단계에서 다시 그림
 ========================================================= */
 const CARD_W = 1080, CARD_H = 1350;
-const SANS = "'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif";
-const MONO = "'IBM Plex Mono', ui-monospace, Menlo, monospace";
+const SANS = "'Hahmlet', 'Apple SD Gothic Neo', 'Malgun Gothic', serif";
+const MONO = "'IM Fell English', 'Hahmlet', serif";
 
 function loadImage(src){
   return new Promise(resolve=>{
@@ -905,7 +1092,7 @@ function loadImage(src){
 
 async function ensureCardFonts(sample){
   if(!document.fonts || !document.fonts.load) return;
-  const specs = [`300 26px ${SANS}`, `400 26px ${SANS}`, `600 30px ${SANS}`, `400 22px ${MONO}`, `500 28px ${MONO}`];
+  const specs = [`300 26px ${SANS}`, `400 26px ${SANS}`, `600 30px ${SANS}`, `400 22px ${MONO}`, `400 28px ${MONO}`];
   try{
     await Promise.all(specs.map(s => document.fonts.load(s, sample)));
   }catch(e){ /* 폰트 로드 실패 시 시스템 폰트로 그림 */ }
@@ -1023,7 +1210,7 @@ async function buildShareCardBlob(){
 
   // 상단 바
   ctx.fillStyle = COLORS.ink;
-  ctx.font = `500 28px ${MONO}`;
+  ctx.font = `400 28px ${MONO}`;
   drawSpaced(ctx, 'COFFEE TI', L, 108, 3.4);
   ctx.fillStyle = COLORS.muted;
   ctx.font = `400 22px ${MONO}`;
