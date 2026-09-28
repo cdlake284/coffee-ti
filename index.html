@@ -322,12 +322,11 @@
   }
   .bean-card.sub{ border-color:var(--line-btn); outline:none; background:rgba(255,248,230,.22); }
   .bean-head{
-    display:flex; justify-content:space-between; align-items:flex-start;
+    display:flex; justify-content:space-between; align-items:flex-end;
     padding-bottom:12px; margin-bottom:12px;
     border-bottom:1px dashed rgba(59,42,26,.35);
   }
-  .bean-rank{ display:flex; flex-direction:column; gap:2px; font-size:12px; color:var(--muted); }
-  .bean-rank .num{ font-family:var(--mono); font-size:22px; line-height:1; color:var(--accent); }
+  .bean-rank{ font-size:15px; font-weight:500; line-height:1.3; color:var(--ink); padding-bottom:2px; }
   .bean-match{ text-align:right; line-height:1; }
   .bean-match .lbl{ display:block; font-family:var(--caps); font-size:12px; color:var(--muted); margin-bottom:4px; }
   .bean-match .pct{ font-family:var(--mono); font-size:34px; color:var(--accent); }
@@ -1200,7 +1199,7 @@ function beanHTML(c, idx, match){
   return `
     <article class="bean-card${main ? '' : ' sub'} seq" style="--d:${(0.5 + idx * 0.1).toFixed(2)}s">
       <div class="bean-head">
-        <div class="bean-rank"><span class="num">${pad2(idx+1)}</span><span>${BEAN_ROLE[idx] || ''}</span></div>
+        <div class="bean-rank">${BEAN_ROLE[idx] || ''}</div>
         ${match !== null ? `<div class="bean-match"><span class="lbl">Match</span><span class="pct">${match}%</span></div>` : ''}
       </div>
       <div class="bean-body">
@@ -1376,17 +1375,15 @@ function drawBeanCard(ctx, b, idx, x, y, w){
   ctx.strokeRect(x + 1, y + 1, w - 2, h - 2);
 
   const ix = x + pad, iw = w - pad * 2, top = y + 18;
-  // 순위 · 역할
+  // 역할 (매칭률 숫자와 아래쪽을 맞춤)
   ctx.textAlign = 'left';
-  ctx.fillStyle = COLORS.accent;
-  ctx.font = `400 34px ${MONO}`;
-  ctx.fillText(pad2(idx + 1), ix, top + 28);
-  ctx.fillStyle = COLORS.muted;
-  ctx.font = `400 20px ${SANS}`;
-  ctx.fillText(BEAN_ROLE[idx] || '', ix, top + 58);
+  ctx.fillStyle = COLORS.ink;
+  ctx.font = `500 23px ${SANS}`;
+  ctx.fillText(BEAN_ROLE[idx] || '', ix, top + 60);
   // 매칭률
   if(b.match !== null){
     ctx.textAlign = 'right';
+    ctx.fillStyle = COLORS.muted;
     ctx.font = `400 20px ${CAPS}`;
     ctx.fillText('Match', ix + iw, top + 16);
     ctx.fillStyle = COLORS.accent;
