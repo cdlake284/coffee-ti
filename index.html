@@ -35,6 +35,7 @@
     --line-soft:rgba(59,42,26,.12);
     --line-btn:rgba(59,42,26,.42);
     --accent:#8E2F22;        /* 봉랍 적갈색 */
+    --white:#FBF8F2;         /* 시작·결과 화면의 따뜻한 흰 종이 */
     --sans:'Hahmlet', 'Apple SD Gothic Neo', 'Malgun Gothic', serif;
     --mono:'IM Fell English', 'Hahmlet', serif;
     --caps:'IM Fell English SC', 'IM Fell English', 'Hahmlet', serif;
@@ -68,13 +69,22 @@
     background-position:center top;
     /* 그을린 가장자리 */
     box-shadow:inset 0 0 64px rgba(120,78,34,.5), inset 0 0 12px rgba(90,58,24,.55);
-    padding:28px 24px 32px;
+    --fp-t:28px; --fp-x:24px; --fp-b:32px;
+    padding:var(--fp-t) var(--fp-x) var(--fp-b);
     display:flex;
     flex-direction:column;
+    position:relative;
   }
+  /* 시작·결과 화면: 양피지 위를 흰 종이로 덮음 (전환할 때 부드럽게 바뀜) */
+  .frame::before{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:var(--white);
+    opacity:0; transition:opacity .7s ease;
+  }
+  .frame[data-theme="white"]::before{ opacity:1; }
 
   /* ---------- 공통 ---------- */
-  .screen{ display:none; flex-direction:column; flex:1; animation:fade .45s var(--ease) both; }
+  .screen{ display:none; flex-direction:column; flex:1; position:relative; z-index:1; animation:fade .45s var(--ease) both; }
   .screen.active{ display:flex; }
   @keyframes fade{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:none;} }
 
@@ -138,6 +148,13 @@
   /* 원정 떠나기: 시작 화면 글자가 사라진 뒤 두루마리가 풀리며 첫 질문이 드러남 */
   #screen-start .topbar, .start-mid, .btn-start{ transition:opacity .3s ease, transform .3s ease; }
   #screen-start.leaving .topbar, #screen-start.leaving .start-mid, #screen-start.leaving .btn-start{ opacity:0; transform:translateY(-8px); }
+  #screen-survey.unrolling{
+    margin:calc(var(--fp-t) * -1) calc(var(--fp-x) * -1) calc(var(--fp-b) * -1);
+    padding:var(--fp-t) var(--fp-x) var(--fp-b);
+    background-color:var(--bg); background-image:var(--paper);
+    background-size:480px 1200px; background-position:center top;
+    box-shadow:inset 0 0 64px rgba(120,78,34,.5), inset 0 0 12px rgba(90,58,24,.55);
+  }
   .scroll-roll{ position:fixed; z-index:40; pointer-events:none; border-radius:23px / 50%; }
   .scroll-roll .cyl{
     position:absolute; inset:0; border-radius:inherit;
@@ -218,7 +235,7 @@
   .options.q-anim{ animation-delay:.06s; }
   /* 작은 휴대폰: 지도·질문·선택지가 한 화면에 들어오도록 */
   @media (max-height:720px){
-    .frame{ padding-top:16px; }
+    .frame{ --fp-t:16px; }
     #screen-survey .icon-btn{ width:38px; height:38px; }
     .q-main{ gap:18px; padding:12px 0 4px; }
     .survey-map{ width:clamp(144px, 46vw, 180px); }
@@ -359,7 +376,7 @@
 </style>
 </head>
 <body>
-<div class="frame" id="frame">
+<div class="frame" id="frame" data-theme="white">
 
   <!-- ================= START ================= -->
   <section class="screen active" id="screen-start">
@@ -571,9 +588,12 @@ const screens = {
   result: document.getElementById('screen-result')
 };
 const prefersReducedMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+const frameEl = document.getElementById('frame');
+const WHITE_SCREENS = ['start', 'result'];
 function showScreen(name){
   Object.values(screens).forEach(s=>s.classList.remove('active'));
   screens[name].classList.add('active');
+  frameEl.dataset.theme = WHITE_SCREENS.includes(name) ? 'white' : 'paper';
   window.scrollTo(0, 0);
 }
 
@@ -814,8 +834,9 @@ function unrollToSurvey(){
   const startEl = screens.start, surveyEl = screens.survey;
   startEl.classList.add('leaving');
   setTimeout(()=>{
-    surveyEl.classList.add('no-fade');
+    surveyEl.classList.add('no-fade', 'unrolling');
     beginSurvey();
+    frameEl.dataset.theme = 'white';   // 풀리는 동안 바깥은 흰 종이 그대로
     startEl.classList.remove('leaving');
     surveyEl.style.pointerEvents = 'none';
 
@@ -844,6 +865,8 @@ function unrollToSurvey(){
       surveyEl.style.clipPath = '';
       surveyEl.style.pointerEvents = '';
       surveyEl.classList.remove('no-fade');
+      frameEl.dataset.theme = 'paper';                         // 바탕을 양피지로 바꾼 뒤
+      setTimeout(()=> surveyEl.classList.remove('unrolling'), 750);  // 설문 화면의 임시 양피지를 걷음
       lip.remove();
       roll.style.transition = 'opacity .25s ease';
       roll.style.opacity = '0';
@@ -1249,6 +1272,7 @@ function renderResult(type, c1, c2, userVec){
    SHARE CARD (1080 x 1350, Canvas로 직접 그림 · 보물 발견 기록)
 ========================================================= */
 const CARD_W = 1080, CARD_H = 1350;
+let SHARE_CARD_THEME = 'white';   // 'white' | 'paper'
 const SANS = "'Hahmlet', 'Apple SD Gothic Neo', 'Malgun Gothic', serif";
 const MONO = "'IM Fell English', 'Hahmlet', serif";
 const CAPS = "'IM Fell English SC', 'IM Fell English', 'Hahmlet', serif";
@@ -1434,7 +1458,12 @@ async function buildShareCardBlob(){
   const ctx = canvas.getContext('2d');
   const L = 80, R = 1000, CX = CARD_W / 2;
 
-  drawParchment(ctx, CARD_W, CARD_H);
+  if(SHARE_CARD_THEME === 'white'){
+    ctx.fillStyle = '#FBF8F2';
+    ctx.fillRect(0, 0, CARD_W, CARD_H);
+  } else {
+    drawParchment(ctx, CARD_W, CARD_H);
+  }
 
   // 상단 바 (두 줄 괘선)
   ctx.textAlign = 'left';
